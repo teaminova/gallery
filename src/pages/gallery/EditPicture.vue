@@ -1,12 +1,12 @@
 <template>
   <section>
-    <base-card class='StartHeaderBgColor'>
-      <div class='start_header'>
+    <base-card class="StartHeaderBgColor">
+      <div class="start_header">
         <h2>Edit Picture</h2>
       </div>
     </base-card>
     <base-card>
-      <edit-form @save-data='saveData' @cancel-edit='cancelEdit'></edit-form>
+      <edit-form @save-data="saveData" @cancel-edit="cancelEdit"></edit-form>
     </base-card>
   </section>
 </template>

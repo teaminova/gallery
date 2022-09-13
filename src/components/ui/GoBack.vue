@@ -1,6 +1,6 @@
 <template>
  <span>
-   <base-button @click='goBack'>Go Back</base-button>
+   <base-button @click="goBack">Go Back</base-button>
  </span>
 </template>
 

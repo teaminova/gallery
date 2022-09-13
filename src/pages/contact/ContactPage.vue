@@ -1,7 +1,7 @@
 <template>
-  <section id='selected_menu'>
-    <base-card class='StartHeaderBgColor'>
-      <div class='start_header'>
+  <section id="selected_menu">
+    <base-card class="StartHeaderBgColor">
+      <div class="start_header">
         <h2>Contact Info</h2>
       </div>
     </base-card>
@@ -9,10 +9,10 @@
   <section>
     <base-card>
       <h2>Contact Marija!</h2>
-      <div class='contacts'>
-        <h3>E-Mail: <a href='mailto:maridzasart@gmail.com?subject=Mail from Website'>maridzasart@gmail.com</a></h3>
+      <div class="contacts">
+        <h3>E-Mail: <a href="mailto:maridzasart@gmail.com?subject=Mail from Website">maridzasart@gmail.com</a></h3>
         <h3>Phone number: 000 000 000</h3>
-        <h3>Facebook: <a href='https://www.facebook.com/marija.kjurchieva.1' target='_blank'>Мариџа Ќурчиева</a></h3>
+        <h3>Facebook: <a href="https://www.facebook.com/marija.kjurchieva.1" target="_blank">Мариџа Ќурчиева</a></h3>
         <h3>Instagram: Marija Kjurchieva</h3>
         <h3>Twitter: Marija Kjurchieva</h3>
         <h3>Skype: Marija Kjurchieva</h3>

@@ -1,6 +1,6 @@
 <template>
   HOME PAGE
-  <router-link to='/gallery'>VIEW ARTWORK</router-link>
+  <router-link to="/gallery">VIEW ARTWORK</router-link>
 </template>
 
 <script>

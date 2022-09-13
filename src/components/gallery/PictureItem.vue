@@ -1,14 +1,14 @@
 <template>
   <li>
     <!-- tuka ke stoi image file-ot -->
-    <div class='img-div'>
-      <img alt='picture image' src='../assets/placeholder_image.jpg'>
+    <div class="img-div">
+      <img alt="picture image" src="../assets/placeholder_image.jpg">
     </div>
     <h3>{{ title }}</h3>
     <h4>{{ price }} MKD</h4>
     <h4>{{ dimensions }}</h4>
-    <div class='actions'>
-      <base-button link :to='pictureDetailsLink'>View Details</base-button>
+    <div class="actions">
+      <base-button link :to="pictureDetailsLink">View Details</base-button>
     </div>
   </li>
 </template>

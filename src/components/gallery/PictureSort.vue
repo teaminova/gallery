@@ -1,24 +1,24 @@
 <template>
   <h2>Sort by:</h2>
-  <span class='filter-option'>
-    <label for='newest'>Newest
-      <input type='radio' name='sortStyle' id='newest' checked @change='setSorter' />
+  <span class="filter-option">
+    <label for="newest">Newest
+      <input type="radio" name="sortStyle" id="newest" checked @change="setSorter" />
       <span class="radio_class"></span>
     </label>
-    <label for='a_z'>Title (A-Z)
-      <input type='radio' name='sortStyle' id='a_z' @change='setSorter' />
+    <label for="a_z">Title (A-Z)
+      <input type="radio" name="sortStyle" id="a_z" @change="setSorter" />
       <span class="radio_class"></span>
     </label>
-    <label for='z_a'>Title (Z-A)
-      <input type='radio' name='sortStyle' id='z_a' @change='setSorter' />
+    <label for="z_a">Title (Z-A)
+      <input type="radio" name="sortStyle" id="z_a" @change="setSorter" />
       <span class="radio_class"></span>
     </label>
-    <label for='l_h'>Price (ascending)
-      <input type='radio' name='sortStyle' id='l_h' @change='setSorter' />
+    <label for="l_h">Price (ascending)
+      <input type="radio" name="sortStyle" id="l_h" @change="setSorter" />
       <span class="radio_class"></span>
     </label>
-    <label for='h_l'>Price (descending)
-      <input type='radio' name='sortStyle' id='h_l' @change='setSorter' />
+    <label for="h_l">Price (descending)
+      <input type="radio" name="sortStyle" id="h_l" @change="setSorter" />
       <span class="radio_class"></span>
     </label>
   </span>

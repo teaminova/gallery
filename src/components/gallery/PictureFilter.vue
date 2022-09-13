@@ -1,91 +1,91 @@
 <template>
-  <div class='container1'>
+  <div class="container1">
     <div>
       <h2>Price (MKD):</h2>
-      <span class='filter-option'>
-        <label for='minPrice'>From: </label>
+      <span class="filter-option">
+        <label for="minPrice">From: </label>
         <input
-          type='number'
-          id='minPrice'
-          min='0'
-          max='1000000000'
-          placeholder='min'
-          size='10'
-          @change='setValueFilter'
-          class='number_input'
+          type="number"
+          id="minPrice"
+          min="0"
+          max="1000000000"
+          placeholder="min"
+          size="10"
+          @change="setValueFilter"
+          class="number_input"
         />
       </span>
-      <span class='filter-option'>
-      <label for='maxPrice'>To: </label>
+      <span class="filter-option">
+      <label for="maxPrice">To: </label>
         <input
-          type='number'
-          id='maxPrice'
-          min='0'
-          max='1000000000'
-          placeholder='max'
-          size='10'
-          @change='setValueFilter'
-          class='number_input'
+          type="number"
+          id="maxPrice"
+          min="0"
+          max="1000000000"
+          placeholder="max"
+          size="10"
+          @change="setValueFilter"
+          class="number_input"
         />
       </span>
       <br><br>
     </div>
     <div>
       <h2>Width (cm):</h2>
-      <span class='filter-option'>
-        <label for='minWidth'>From: </label>
+      <span class="filter-option">
+        <label for="minWidth">From: </label>
         <input
-          type='number'
-          id='minWidth'
-          min='0'
-          max='1000000000'
-          placeholder='min'
-          size='10'
-          @change='setValueFilter'
-          class='number_input'
+          type="number"
+          id="minWidth"
+          min="0"
+          max="1000000000"
+          placeholder="min"
+          size="10"
+          @change="setValueFilter"
+          class="number_input"
         />
       </span>
-      <span class='filter-option'>
-        <label for='maxWidth'>To: </label>
+      <span class="filter-option">
+        <label for="maxWidth">To: </label>
         <input
-          type='number'
-          id='maxWidth'
-          min='0'
-          max='1000000000'
-          placeholder='max'
-          size='10'
-          @change='setValueFilter'
-          class='number_input'
+          type="number"
+          id="maxWidth"
+          min="0"
+          max="1000000000"
+          placeholder="max"
+          size="10"
+          @change="setValueFilter"
+          class="number_input"
         />
       </span>
       <br><br>
     </div>
     <div>
       <h2>Height (cm):</h2>
-      <span class='filter-option'>
-        <label for='minHeight'>From: </label>
+      <span class="filter-option">
+        <label for="minHeight">From: </label>
         <input
-          type='number'
-          id='minHeight'
-          min='0'
-          max='1000000000'
-          placeholder='min'
-          size='10'
-          @change='setValueFilter'
-          class='number_input'
+          type="number"
+          id="minHeight"
+          min="0"
+          max="1000000000"
+          placeholder="min"
+          size="10"
+          @change="setValueFilter"
+          class="number_input"
         />
       </span>
-      <span class='filter-option'>
-        <label for='maxHeight'>To: </label>
+      <span class="filter-option">
+        <label for="maxHeight">To: </label>
         <input
-          type='number'
-          id='maxHeight'
-          min='0'
-          max='1000000000'
-          placeholder='max'
-          size='10'
-          @change='setValueFilter'
-          class='number_input'
+          type="number"
+          id="maxHeight"
+          min="0"
+          max="1000000000"
+          placeholder="max"
+          size="10"
+          @change="setValueFilter"
+          class="number_input"
         />
       </span>
       <br><br>
@@ -94,46 +94,74 @@
 
 
   <h2>Technique:</h2>
-  <div class='container2'>
-    <span class='filter-option'>
-      <label for='acrylic' class='checkbox_label' >Acrylic
-        <input type='checkbox' id='acrylic' checked @change='setFilter' />
+  <div class="container2">
+    <span class="filter-option">
+      <label for="acrylic" class="checkbox_label" >Acrylic
+        <input
+          type="checkbox"
+          id="acrylic"
+          checked
+          @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
     </span>
-    <span class='filter-option'>
-      <label for='charcoal' class='checkbox_label' >Charcoal
-        <input type='checkbox' id='charcoal' checked @change='setFilter' />
+    <span class="filter-option">
+      <label for="charcoal" class="checkbox_label" >Charcoal
+        <input
+          type="checkbox"
+          id="charcoal"
+          checked
+          @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
     </span>
-    <span class='filter-option'>
-      <label for='watercolor' class='checkbox_label' >Watercolor
-        <input type='checkbox' id='watercolor' checked @change='setFilter' />
+    <span class="filter-option">
+      <label for="watercolor" class="checkbox_label" >Watercolor
+        <input
+          type="checkbox"
+          id="watercolor"
+          checked
+          @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
     </span>
-    <span class='filter-option'>
-      <label for='pencil' class='checkbox_label' >Pencil
-        <input type='checkbox' id='pencil' checked @change='setFilter' />
+    <span class="filter-option">
+      <label for="pencil" class="checkbox_label" >Pencil
+        <input
+          type="checkbox"
+          id="pencil"
+          checked
+          @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
     </span>
-    <span class='filter-option'>
-      <label for='pastel' class='checkbox_label' >Pastel
-        <input type='checkbox' id='pastel' checked @change='setFilter' />
+    <span class="filter-option">
+      <label for="pastel" class="checkbox_label" >Pastel
+        <input
+          type="checkbox"
+          id="pastel"
+          checked
+          @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
     </span>
-    <span class='filter-option'>
-      <label for='mixed_media' class='checkbox_label' >Mixed media
-        <input type='checkbox' id='mixed_media' checked @change='setFilter' />
+    <span class="filter-option">
+      <label for="mixed_media" class="checkbox_label" >Mixed media
+        <input
+          type="checkbox"
+          id="mixed_media"
+          checked
+          @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
     </span>
-    <span class='filter-option'>
-      <label for='other' class='checkbox_label' >Other
-        <input type='checkbox' id='other' checked @change='setFilter' />
+    <span class="filter-option">
+      <label for="other" class="checkbox_label" >Other
+        <input
+          type="checkbox"
+          id="other"
+          checked
+          @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
     </span>
@@ -165,6 +193,68 @@ export default {
       }
     };
   },
+  // created() {
+  //   if (this.$route.query) {
+  //     this.filters = {
+  //       minPrice: parseInt(this.$route.query.minPrice || this.filters.minPrice, 10),
+  //       maxPrice: parseInt(this.$route.query.maxPrice || this.filters.maxPrice, 10),
+  //       minWidth: parseInt(this.$route.query.minWidth || this.filters.minWidth, 10),
+  //       maxWidth: parseInt(this.$route.query.maxWidth || this.filters.maxWidth, 10),
+  //       minHeight: parseInt(this.$route.query.minHeight || this.filters.minHeight, 10),
+  //       maxHeight: parseInt(this.$route.query.maxHeight || this.filters.maxHeight, 10),
+  //
+  //       // acrylic: 'true' === this.$route.query.acrylic || this.filters.acrylic,
+  //       // charcoal: 'true' === this.$route.query.charcoal || this.filters.charcoal,
+  //       // watercolor: 'true' === this.$route.query.watercolor || this.filters.watercolor,
+  //       // pencil: 'true' === this.$route.query.pencil || this.filters.pencil,
+  //       // pastel: 'true' === this.$route.query.pastel || this.filters.pastel,
+  //       // mixed_media: 'true' === this.$route.query.mixed_media || this.filters.mixed_media,
+  //       // other: 'true' === this.$route.query.other || this.filters.other
+  //     };
+  //     if(this.$route.query.acrylic) {
+  //       this.filters.acrylic = 'true' === this.$route.query.acrylic;
+  //     }
+  //     else {
+  //       this.filters.acrylic = true;
+  //     }
+  //     if(this.$route.query.charcoal) {
+  //       this.filters.charcoal = 'true' === this.$route.query.charcoal;
+  //     }
+  //     else {
+  //       this.filters.charcoal = true;
+  //     }
+  //     if(this.$route.query.watercolor) {
+  //       this.filters.watercolor = 'true' === this.$route.query.watercolor;
+  //     }
+  //     else {
+  //       this.filters.watercolor = true;
+  //     }
+  //     if(this.$route.query.pencil) {
+  //       this.filters.pencil = 'true' === this.$route.query.pencil;
+  //     }
+  //     else {
+  //       this.filters.pencil = true;
+  //     }
+  //     if(this.$route.query.pastel) {
+  //       this.filters.pastel = 'true' === this.$route.query.pastel;
+  //     }
+  //     else {
+  //       this.filters.pastel = true;
+  //     }
+  //     if(this.$route.query.mixed_media) {
+  //       this.filters.mixed_media = 'true' === this.$route.query.mixed_media;
+  //     }
+  //     else {
+  //       this.filters.mixed_media = true;
+  //     }
+  //     if(this.$route.query.other) {
+  //       this.filters.other = 'true' === this.$route.query.other;
+  //     }
+  //     else {
+  //       this.filters.other = true;
+  //     }
+  //   }
+  // },
   methods: {
     setFilter: function(event) {
       const inputId = event.target.id;

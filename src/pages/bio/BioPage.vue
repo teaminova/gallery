@@ -1,7 +1,7 @@
 <template>
-  <section id='selected_menu'>
-    <base-card class='StartHeaderBgColor'>
-      <div class='start_header'>
+  <section id="selected_menu">
+    <base-card class="StartHeaderBgColor">
+      <div class="start_header">
         <h2>Marija's Bio</h2>
       </div>
     </base-card>

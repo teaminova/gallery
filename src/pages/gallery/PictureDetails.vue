@@ -1,60 +1,60 @@
 <template>
-  <base-dialog v-if='deleteDialogIsVisible' title='Remove Picture'>
+  <base-dialog v-if="deleteDialogIsVisible" title="Remove Picture">
     <template #default>
       <p>Are you sure you want to remove this picture from the gallery?</p>
     </template>
     <template #actions>
-      <base-button @click='deletePicture'>Yes</base-button>
-      <base-button mode='outline' @click='showDeleteDialog'>No</base-button>
+      <base-button @click="deletePicture">Yes</base-button>
+      <base-button mode="outline" @click="showDeleteDialog">No</base-button>
     </template>
   </base-dialog>
 
   <section>
-    <base-card class='StartHeaderBgColor'>
-      <div class='start_header'>
+    <base-card class="StartHeaderBgColor">
+      <div class="start_header">
         <go-back></go-back>
         <h2>Picture Details</h2>
       </div>
     </base-card>
-    <base-card>
+    <base-card class="details_container">
       <!-- tuka ke stoi image file-ot -->
-      <div class='img-div'>
-        <img alt='picture image' src='../../components/assets/placeholder_image.jpg'>
+      <div class="img-div">
+        <img alt="picture image" src="../../components/assets/placeholder_image.jpg">
       </div>
-      <div class='details'>
+      <div class="details">
         <h2>{{ title }}</h2>
         <h3>{{ price }} MKD</h3>
         <h3>{{ dimensions }}</h3>
         <h3>{{ year }}</h3>
-        <base-badge type='theme' :title='theme'></base-badge>
+        <base-badge type="theme" :title="theme"></base-badge>
         <base-badge
-          v-for='technique in techniques'
-          :key='technique'
-          :type='technique'
-          :title='technique'
+          v-for="technique in techniques"
+          :key="technique"
+          :type="technique"
+          :title="technique"
         ></base-badge>
-        <p>{{ description }}</p><br>
+        <p>{{ description }}</p>
       </div>
     </base-card>
   </section>
-  <section class='contactSec'>
+  <section class="contactSec">
     <base-card>
       <header>
         <h2>Interested? Contact Marija!</h2>
-        <div class='sendMailDiv'>
-          <a :href='sendMail'>Send E-Mail for Selected Picture</a>
+        <div class="sendMailDiv">
+          <a :href="sendMail">Send E-Mail for Selected Picture</a>
         </div>
         <div>
-          <base-button link :to='contactInfoLink' mode='outline'>See All Contact Info</base-button>
+          <base-button link :to="contactInfoLink" mode="outline">See All Contact Info</base-button>
         </div>
       </header>
     </base-card>
   </section>
   <section>
     <base-card>
-      <div class='controls'>
-        <base-button link :to='editLink'>Edit</base-button>
-        <base-button mode='outline' @click='showDeleteDialog'>Delete</base-button>
+      <div class="controls">
+        <base-button link :to="editLink">Edit</base-button>
+        <base-button mode="outline" @click="showDeleteDialog">Delete</base-button>
       </div>
     </base-card>
   </section>
@@ -167,6 +167,16 @@ header {
   text-align: center;
 }
 
+.details_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.details{
+  max-width: 20rem;
+}
+
 .contactSec div {
   margin-bottom: 0.5rem;
 }
@@ -198,7 +208,10 @@ header {
 
 .img-div {
   float: left;
+  /*
   margin-right: 1rem;
+   */
+  margin: 1rem;
   width: 19rem;
   height: 19rem;
   border: 1px solid grey;

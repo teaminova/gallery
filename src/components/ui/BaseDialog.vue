@@ -2,7 +2,7 @@
   <div></div>
   <dialog open>
     <header>
-      <slot name='header'>
+      <slot name="header">
         <h2>{{ title }}</h2>
       </slot>
     </header>
@@ -12,7 +12,7 @@
       </slot>
     </section>
     <menu>
-      <slot name='actions'>
+      <slot name="actions">
 
       </slot>
     </menu>

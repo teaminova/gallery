@@ -1,103 +1,111 @@
 <template>
-  <section id='selected_menu'>
-    <base-card class='StartHeaderBgColor'>
-      <div class='start_header'>
+  <section id="selected_menu">
+    <base-card class="StartHeaderBgColor">
+      <div class="start_header">
         <h2>Gallery</h2>
       </div>
     </base-card>
   </section>
-  <section class='themes' id='themes'>
+  <section class="themes" id="themes">
     <base-button
-      mode='flat'
-      :class='{ selected_theme: chosenTheme === "all"}'
-      @click='chosenTheme = "all"'
-    >SHOW ALL</base-button>
+            mode="flat"
+            :class="{ 'selected_theme': chosenTheme === 'all'}"
+            @click="chosenTheme = 'all'"
+    >SHOW ALL
+    </base-button>
     <base-button
-      mode='flat'
-      :class='{ selected_theme: chosenTheme === "portrait"}'
-      @click='chosenTheme = "portrait"'
-    >PORTRAITS</base-button>
+            mode="flat"
+            :class="{ 'selected_theme': chosenTheme === 'portrait'}"
+            @click="chosenTheme = 'portrait'"
+    >PORTRAITS
+    </base-button>
     <base-button
-      mode='flat'
-      :class='{ selected_theme: chosenTheme === "still_life"}'
-      @click='chosenTheme = "still_life"'
-    >STILL LIFE</base-button>
+            mode="flat"
+            :class="{ 'selected_theme': chosenTheme === 'still_life'}"
+            @click="chosenTheme = 'still_life'"
+    >STILL LIFE
+    </base-button>
     <base-button
-      mode='flat'
-      :class='{ selected_theme: chosenTheme === "landscape"}'
-      @click='chosenTheme = "landscape"'
-    >LANDSCAPES</base-button>
+            mode="flat"
+            :class="{ 'selected_theme': chosenTheme === 'landscape'}"
+            @click="chosenTheme = 'landscape'"
+    >LANDSCAPES
+    </base-button>
     <base-button
-      mode='flat'
-      :class='{ selected_theme: chosenTheme === "act"}'
-      @click='chosenTheme = "act"'
-    >ACT</base-button>
+            mode="flat"
+            :class="{ 'selected_theme': chosenTheme === 'act'}"
+            @click="chosenTheme = 'act'"
+    >ACT
+    </base-button>
     <base-button
-      mode='flat'
-      :class='{ selected_theme: chosenTheme === "abstract"}'
-      @click='chosenTheme = "abstract"'
-    >ABSTRACT</base-button>
+            mode="flat"
+            :class="{ 'selected_theme': chosenTheme === 'abstract'}"
+            @click="chosenTheme = 'abstract'"
+    >ABSTRACT
+    </base-button>
     <base-button
-      mode='flat'
-      :class='{ selected_theme: chosenTheme === "sketch"}'
-      @click='chosenTheme = "sketch"'
-    >SKETCHES</base-button>
+            mode="flat"
+            :class="{ 'selected_theme': chosenTheme === 'sketch'}"
+            @click="chosenTheme = 'sketch'"
+    >SKETCHES
+    </base-button>
     <base-button
-      mode='flat'
-      :class='{ selected_theme: chosenTheme === "other"}'
-      @click='chosenTheme = "other"'
-    >OTHER</base-button>
+            mode="flat"
+            :class="{ 'selected_theme': chosenTheme === 'other'}"
+            @click="chosenTheme = 'other'"
+    >OTHER
+    </base-button>
   </section>
-  <section class='searchFilterSort'>
+  <section class="searchFilterSort">
     <base-card>
-      <section id='dropdownThemes'>
+      <section id="dropdownThemes">
         <div>
-          <h3 style='display: inline'><label for="theme">Choose a theme: </label></h3>
-          <select name="theme" id="theme">
-            <option value="all" selected @click='chosenTheme = "all"'>Show All</option>
-            <option value="portraits" @click='chosenTheme = "portrait"'>Portraits</option>
-            <option value="still_life" @click='chosenTheme = "still_life"'>Still Life</option>
-            <option value="landscapes" @click='chosenTheme = "landscape"'>Landscapes</option>
-            <option value="act" @click='chosenTheme = "act"'>Act</option>
-            <option value="abstract" @click='chosenTheme = "abstract"'>Abstract</option>
-            <option value="sketches" @click='chosenTheme = "sketch"'>Sketches</option>
-            <option value="other" @click='chosenTheme = "other"'>Other</option>
+          <h3 style="display: inline"><label for="theme">Choose a theme: </label></h3>
+          <select name="theme" id="theme" v-model="chosenTheme">
+            <option value="all" selected >Show All</option>
+            <option value="portrait" >Portraits</option>
+            <option value="still_life" >Still Life</option>
+            <option value="landscape" >Landscapes</option>
+            <option value="act" >Act</option>
+            <option value="abstract" >Abstract</option>
+            <option value="sketch" >Sketches</option>
+            <option value="other" >Other</option>
           </select>
         </div>
       </section>
-      <div class='SFS_controls'>
+      <div class="SFS_controls">
         <div>
-          <picture-search @change-searcher='setSearcher'></picture-search>
+          <picture-search @change-searcher="setSearcher"></picture-search>
         </div>
         <div>
-          <base-button @click='filterOptions' :mode='{outline: !showFilterOptions}' >Filter</base-button>
-          <base-button @click='sortOptions' :mode='{outline: !showSortOptions}' >Sort</base-button>
+          <base-button @click="filterOptions" mode="{ outline: !showFilterOptions }" >Filter</base-button>
+          <base-button @click="sortOptions" mode="{ outline: !showSortOptions }" >Sort</base-button>
         </div>
       </div>
-      <section v-show='showFilterOptions'>
+      <section v-show="showFilterOptions">
         <br>
-        <picture-filter @change-filter='setFilters'></picture-filter>
+        <picture-filter @change-filter="setFilters"></picture-filter>
       </section>
-      <section v-show='showSortOptions'>
+      <section v-show="showSortOptions">
         <br>
-        <picture-sort @change-sorter='setSorter'></picture-sort>
+        <picture-sort @change-sorter="setSorter"></picture-sort>
       </section>
     </base-card>
   </section>
   <section>
     <base-card>
-      <div class='controls'>
-        <base-button mode='outline'>Refresh</base-button>
-        <base-button link to='/addPic'>Add</base-button>
+      <div class="controls">
+        <base-button mode="outline">Refresh</base-button>
+        <base-button link to="/addPic">Add</base-button>
       </div>
-      <ul v-if='hasGallery'>
-        <picture-item v-for='picture in filteredGallery'
-                      :key='picture.id'
-                      :id='picture.id'
-                      :title='picture.title'
-                      :price='picture.price'
-                      :width='picture.width'
-                      :height='picture.height'
+      <ul v-if="hasGallery">
+        <picture-item v-for="picture in filteredGallery"
+                      :key="picture.id"
+                      :id="picture.id"
+                      :title="picture.title"
+                      :price="picture.price"
+                      :width="picture.width"
+                      :height="picture.height"
         ></picture-item>
       </ul>
       <h3 v-else>No pictures found.</h3>
@@ -118,7 +126,7 @@ export default {
   components: { PictureSearch, PictureSort, PictureFilter, BaseButton, BaseCard, PictureItem },
   data() {
     return {
-      chosenTheme: "all",
+      chosenTheme: 'all',
       searcher: '',
       showFilterOptions: false,
       showSortOptions: false,
@@ -129,10 +137,6 @@ export default {
         maxWidth: 1000000000,
         minHeight: 0,
         maxHeight: 1000000000,
-        S_height: true,
-        M_height: true,
-        L_height: true,
-        XL_height: true,
         acrylic: true,
         charcoal: true,
         watercolor: true,
@@ -144,6 +148,70 @@ export default {
       sorter: 'newest'
     };
   },
+  // created() {
+  //   //this.$store.dispatch('gallery/getPictures');
+  //   console.log(this.$route.query);
+  //   if (this.$route.query.gallery) {
+  //     this.activeFilters = {
+  //       minPrice: parseInt(this.$route.query.minPrice || this.activeFilters.minPrice, 10),
+  //       maxPrice: parseInt(this.$route.query.maxPrice || this.activeFilters.maxPrice, 10),
+  //       minWidth: parseInt(this.$route.query.minWidth || this.activeFilters.minWidth, 10),
+  //       maxWidth: parseInt(this.$route.query.maxWidth || this.activeFilters.maxWidth, 10),
+  //       minHeight: parseInt(this.$route.query.minHeight || this.activeFilters.minHeight, 10),
+  //       maxHeight: parseInt(this.$route.query.maxHeight || this.activeFilters.maxHeight, 10),
+  //       // acrylic: 'true' === this.$route.query.acrylic || this.filters.acrylic,
+  //       // charcoal: 'true' === this.$route.query.charcoal || this.filters.charcoal,
+  //       // watercolor: 'true' === this.$route.query.watercolor || this.filters.watercolor,
+  //       // pencil: 'true' === this.$route.query.pencil || this.filters.pencil,
+  //       // pastel: 'true' === this.$route.query.pastel || this.filters.pastel,
+  //       // mixed_media: 'true' === this.$route.query.mixed_media || this.filters.mixed_media,
+  //       // other: 'true' === this.$route.query.other || this.filters.other
+  //     };
+  //
+  //     if(this.$route.query.acrylic) {
+  //       this.activeFilters.acrylic = 'true' === this.$route.query.acrylic;
+  //     }
+  //     else {
+  //       this.activeFilters.acrylic = true;
+  //     }
+  //     if(this.$route.query.charcoal) {
+  //       this.activeFilters.charcoal = 'true' === this.$route.query.charcoal;
+  //     }
+  //     else {
+  //       this.activeFilters.charcoal = true;
+  //     }
+  //     if(this.$route.query.watercolor) {
+  //       this.activeFilters.watercolor = 'true' === this.$route.query.watercolor;
+  //     }
+  //     else {
+  //       this.activeFilters.watercolor = true;
+  //     }
+  //     if(this.$route.query.pencil) {
+  //       this.activeFilters.pencil = 'true' === this.$route.query.pencil;
+  //     }
+  //     else {
+  //       this.activeFilters.pencil = true;
+  //     }
+  //     if(this.$route.query.pastel) {
+  //       this.activeFilters.pastel = 'true' === this.$route.query.pastel;
+  //     }
+  //     else {
+  //       this.activeFilters.pastel = true;
+  //     }
+  //     if(this.$route.query.mixed_media) {
+  //       this.activeFilters.mixed_media = 'true' === this.$route.query.mixed_media;
+  //     }
+  //     else {
+  //       this.activeFilters.mixed_media = true;
+  //     }
+  //     if(this.$route.query.other) {
+  //       this.activeFilters.other = 'true' === this.$route.query.other;
+  //     }
+  //     else {
+  //       this.activeFilters.other = true;
+  //     }
+  //   }
+  // },
   computed: {
     filteredGallery() {
       const gallery = [...this.$store.getters['gallery/gallery']];
@@ -168,7 +236,7 @@ export default {
     },
     hasGallery() {
       return this.$store.getters['gallery/hasGallery'];
-    },
+    }
   },
   methods: {
     filterOptions() {
@@ -218,6 +286,11 @@ export default {
         return false;
       }
     }
+  // },
+  // watch: {
+  //   activeFilters(newValue) {
+  //     this.$router.replace({ query: newValue });
+  //   }
   }
 };
 </script>
@@ -243,11 +316,16 @@ export default {
 }
 
 @media screen and (min-width: 0px) and (max-width: 768px) {
-  #themes { display: none; width: 90%; }
+  #themes {
+    display: none;
+    width: 90%;
+  }
 }
 
 @media screen and (min-width: 769px) {
-  #dropdownThemes { display: none; }
+  #dropdownThemes {
+    display: none;
+  }
 }
 
 #dropdownThemes div {
@@ -267,6 +345,10 @@ export default {
   font-size: medium;
   text-align: center;
   cursor: pointer;
+}
+
+#dropdownThemes select:focus {
+  background-color: #ffe2e2;
 }
 
 #dropdownThemes option {
@@ -299,7 +381,9 @@ export default {
 }
 
 @media screen and (min-width: 0px) and (max-width: 480px) {
-  .SFS_controls { justify-content: center; }
+  .SFS_controls {
+    justify-content: center;
+  }
 }
 
 ul {

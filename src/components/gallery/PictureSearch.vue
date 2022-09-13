@@ -1,6 +1,10 @@
 <template>
-  <input type='text' placeholder='Type in a title...' name='search' @change='setSearcher'>
-  <base-button mode='search'>Search</base-button>
+  <input
+    type="text"
+    placeholder="Type in a title..."
+    name="search"
+    @change="setSearcher">
+  <base-button mode="search">Search</base-button>
 </template>
 
 <script>

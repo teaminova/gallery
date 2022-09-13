@@ -1,13 +1,13 @@
 <template>
   <section>
-    <base-card class='StartHeaderBgColor'>
-      <div class='start_header'>
+    <base-card class="StartHeaderBgColor">
+      <div class="start_header">
         <go-back></go-back>
         <h2>Add New Picture</h2>
       </div>
     </base-card>
     <base-card>
-      <add-form @save-data='saveData' @cancel-add='cancelAdd'></add-form>
+      <add-form @save-data="saveData" @cancel-add="cancelAdd"></add-form>
     </base-card>
   </section>
 </template>
