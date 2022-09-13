@@ -11,7 +11,8 @@ export default {
   components: { BaseButton },
   methods: {
     goBack() {
-      this.$router.replace('/gallery');
+      // this.$router.replace('/gallery');
+      this.$router.go(-1);
       window.scrollTo(0,0);
     }
   }

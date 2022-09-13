@@ -11,6 +11,7 @@
           max="1000000000"
           placeholder="min"
           size="10"
+          v-model='filters.minPrice'
           @change="setValueFilter"
           class="number_input"
         />
@@ -24,6 +25,7 @@
           max="1000000000"
           placeholder="max"
           size="10"
+          v-model='filters.maxPrice'
           @change="setValueFilter"
           class="number_input"
         />
@@ -41,6 +43,7 @@
           max="1000000000"
           placeholder="min"
           size="10"
+          v-model='filters.minWidth'
           @change="setValueFilter"
           class="number_input"
         />
@@ -54,6 +57,7 @@
           max="1000000000"
           placeholder="max"
           size="10"
+          v-model='filters.maxWidth'
           @change="setValueFilter"
           class="number_input"
         />
@@ -71,6 +75,7 @@
           max="1000000000"
           placeholder="min"
           size="10"
+          v-model='filters.minHeight'
           @change="setValueFilter"
           class="number_input"
         />
@@ -84,6 +89,7 @@
           max="1000000000"
           placeholder="max"
           size="10"
+          v-model='filters.maxHeight'
           @change="setValueFilter"
           class="number_input"
         />
@@ -101,6 +107,7 @@
           type="checkbox"
           id="acrylic"
           checked
+          v-model='filters.acrylic'
           @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
@@ -111,6 +118,7 @@
           type="checkbox"
           id="charcoal"
           checked
+          v-model='filters.charcoal'
           @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
@@ -121,6 +129,7 @@
           type="checkbox"
           id="watercolor"
           checked
+          v-model='filters.watercolor'
           @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
@@ -131,6 +140,7 @@
           type="checkbox"
           id="pencil"
           checked
+          v-model='filters.pencil'
           @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
@@ -141,6 +151,7 @@
           type="checkbox"
           id="pastel"
           checked
+          v-model='filters.pastel'
           @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
@@ -151,6 +162,7 @@
           type="checkbox"
           id="mixed_media"
           checked
+          v-model='filters.mixed_media'
           @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
@@ -161,6 +173,7 @@
           type="checkbox"
           id="other"
           checked
+          v-model='filters.other'
           @change="setFilter" />
         <span class="checkbox_class"></span>
       </label>
@@ -193,68 +206,60 @@ export default {
       }
     };
   },
-  // created() {
-  //   if (this.$route.query) {
-  //     this.filters = {
-  //       minPrice: parseInt(this.$route.query.minPrice || this.filters.minPrice, 10),
-  //       maxPrice: parseInt(this.$route.query.maxPrice || this.filters.maxPrice, 10),
-  //       minWidth: parseInt(this.$route.query.minWidth || this.filters.minWidth, 10),
-  //       maxWidth: parseInt(this.$route.query.maxWidth || this.filters.maxWidth, 10),
-  //       minHeight: parseInt(this.$route.query.minHeight || this.filters.minHeight, 10),
-  //       maxHeight: parseInt(this.$route.query.maxHeight || this.filters.maxHeight, 10),
-  //
-  //       // acrylic: 'true' === this.$route.query.acrylic || this.filters.acrylic,
-  //       // charcoal: 'true' === this.$route.query.charcoal || this.filters.charcoal,
-  //       // watercolor: 'true' === this.$route.query.watercolor || this.filters.watercolor,
-  //       // pencil: 'true' === this.$route.query.pencil || this.filters.pencil,
-  //       // pastel: 'true' === this.$route.query.pastel || this.filters.pastel,
-  //       // mixed_media: 'true' === this.$route.query.mixed_media || this.filters.mixed_media,
-  //       // other: 'true' === this.$route.query.other || this.filters.other
-  //     };
-  //     if(this.$route.query.acrylic) {
-  //       this.filters.acrylic = 'true' === this.$route.query.acrylic;
-  //     }
-  //     else {
-  //       this.filters.acrylic = true;
-  //     }
-  //     if(this.$route.query.charcoal) {
-  //       this.filters.charcoal = 'true' === this.$route.query.charcoal;
-  //     }
-  //     else {
-  //       this.filters.charcoal = true;
-  //     }
-  //     if(this.$route.query.watercolor) {
-  //       this.filters.watercolor = 'true' === this.$route.query.watercolor;
-  //     }
-  //     else {
-  //       this.filters.watercolor = true;
-  //     }
-  //     if(this.$route.query.pencil) {
-  //       this.filters.pencil = 'true' === this.$route.query.pencil;
-  //     }
-  //     else {
-  //       this.filters.pencil = true;
-  //     }
-  //     if(this.$route.query.pastel) {
-  //       this.filters.pastel = 'true' === this.$route.query.pastel;
-  //     }
-  //     else {
-  //       this.filters.pastel = true;
-  //     }
-  //     if(this.$route.query.mixed_media) {
-  //       this.filters.mixed_media = 'true' === this.$route.query.mixed_media;
-  //     }
-  //     else {
-  //       this.filters.mixed_media = true;
-  //     }
-  //     if(this.$route.query.other) {
-  //       this.filters.other = 'true' === this.$route.query.other;
-  //     }
-  //     else {
-  //       this.filters.other = true;
-  //     }
-  //   }
-  // },
+  created() {
+    if (this.$route.query) {
+      this.filters = {
+        minPrice: parseInt(this.$route.query.minPrice || this.filters.minPrice, 10),
+        maxPrice: parseInt(this.$route.query.maxPrice || this.filters.maxPrice, 10),
+        minWidth: parseInt(this.$route.query.minWidth || this.filters.minWidth, 10),
+        maxWidth: parseInt(this.$route.query.maxWidth || this.filters.maxWidth, 10),
+        minHeight: parseInt(this.$route.query.minHeight || this.filters.minHeight, 10),
+        maxHeight: parseInt(this.$route.query.maxHeight || this.filters.maxHeight, 10)
+      };
+      if(this.$route.query.acrylic) {
+        this.filters.acrylic = 'true' === this.$route.query.acrylic;
+      }
+      else {
+        this.filters.acrylic = true;
+      }
+      if(this.$route.query.charcoal) {
+        this.filters.charcoal = 'true' === this.$route.query.charcoal;
+      }
+      else {
+        this.filters.charcoal = true;
+      }
+      if(this.$route.query.watercolor) {
+        this.filters.watercolor = 'true' === this.$route.query.watercolor;
+      }
+      else {
+        this.filters.watercolor = true;
+      }
+      if(this.$route.query.pencil) {
+        this.filters.pencil = 'true' === this.$route.query.pencil;
+      }
+      else {
+        this.filters.pencil = true;
+      }
+      if(this.$route.query.pastel) {
+        this.filters.pastel = 'true' === this.$route.query.pastel;
+      }
+      else {
+        this.filters.pastel = true;
+      }
+      if(this.$route.query.mixed_media) {
+        this.filters.mixed_media = 'true' === this.$route.query.mixed_media;
+      }
+      else {
+        this.filters.mixed_media = true;
+      }
+      if(this.$route.query.other) {
+        this.filters.other = 'true' === this.$route.query.other;
+      }
+      else {
+        this.filters.other = true;
+      }
+    }
+  },
   methods: {
     setFilter: function(event) {
       const inputId = event.target.id;
@@ -275,6 +280,11 @@ export default {
       };
       this.filters = updatedFilters;
       this.$emit('change-filter', updatedFilters);
+    }
+  },
+  watch: {
+    filters(newValue) {
+      this.$router.replace({ query: newValue });
     }
   }
 };

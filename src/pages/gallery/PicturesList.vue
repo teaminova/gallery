@@ -78,8 +78,8 @@
           <picture-search @change-searcher="setSearcher"></picture-search>
         </div>
         <div>
-          <base-button @click="filterOptions" mode="{ outline: !showFilterOptions }" >Filter</base-button>
-          <base-button @click="sortOptions" mode="{ outline: !showSortOptions }" >Sort</base-button>
+          <base-button @click="filterOptions" mode="{ 'outline': !showFilterOptions }" >Filter</base-button>
+          <base-button @click="sortOptions" mode="{ 'outline': !showSortOptions }" >Sort</base-button>
         </div>
       </div>
       <section v-show="showFilterOptions">
@@ -148,70 +148,67 @@ export default {
       sorter: 'newest'
     };
   },
-  // created() {
-  //   //this.$store.dispatch('gallery/getPictures');
-  //   console.log(this.$route.query);
-  //   if (this.$route.query.gallery) {
-  //     this.activeFilters = {
-  //       minPrice: parseInt(this.$route.query.minPrice || this.activeFilters.minPrice, 10),
-  //       maxPrice: parseInt(this.$route.query.maxPrice || this.activeFilters.maxPrice, 10),
-  //       minWidth: parseInt(this.$route.query.minWidth || this.activeFilters.minWidth, 10),
-  //       maxWidth: parseInt(this.$route.query.maxWidth || this.activeFilters.maxWidth, 10),
-  //       minHeight: parseInt(this.$route.query.minHeight || this.activeFilters.minHeight, 10),
-  //       maxHeight: parseInt(this.$route.query.maxHeight || this.activeFilters.maxHeight, 10),
-  //       // acrylic: 'true' === this.$route.query.acrylic || this.filters.acrylic,
-  //       // charcoal: 'true' === this.$route.query.charcoal || this.filters.charcoal,
-  //       // watercolor: 'true' === this.$route.query.watercolor || this.filters.watercolor,
-  //       // pencil: 'true' === this.$route.query.pencil || this.filters.pencil,
-  //       // pastel: 'true' === this.$route.query.pastel || this.filters.pastel,
-  //       // mixed_media: 'true' === this.$route.query.mixed_media || this.filters.mixed_media,
-  //       // other: 'true' === this.$route.query.other || this.filters.other
-  //     };
-  //
-  //     if(this.$route.query.acrylic) {
-  //       this.activeFilters.acrylic = 'true' === this.$route.query.acrylic;
-  //     }
-  //     else {
-  //       this.activeFilters.acrylic = true;
-  //     }
-  //     if(this.$route.query.charcoal) {
-  //       this.activeFilters.charcoal = 'true' === this.$route.query.charcoal;
-  //     }
-  //     else {
-  //       this.activeFilters.charcoal = true;
-  //     }
-  //     if(this.$route.query.watercolor) {
-  //       this.activeFilters.watercolor = 'true' === this.$route.query.watercolor;
-  //     }
-  //     else {
-  //       this.activeFilters.watercolor = true;
-  //     }
-  //     if(this.$route.query.pencil) {
-  //       this.activeFilters.pencil = 'true' === this.$route.query.pencil;
-  //     }
-  //     else {
-  //       this.activeFilters.pencil = true;
-  //     }
-  //     if(this.$route.query.pastel) {
-  //       this.activeFilters.pastel = 'true' === this.$route.query.pastel;
-  //     }
-  //     else {
-  //       this.activeFilters.pastel = true;
-  //     }
-  //     if(this.$route.query.mixed_media) {
-  //       this.activeFilters.mixed_media = 'true' === this.$route.query.mixed_media;
-  //     }
-  //     else {
-  //       this.activeFilters.mixed_media = true;
-  //     }
-  //     if(this.$route.query.other) {
-  //       this.activeFilters.other = 'true' === this.$route.query.other;
-  //     }
-  //     else {
-  //       this.activeFilters.other = true;
-  //     }
-  //   }
-  // },
+  created() {
+    //this.$store.dispatch('gallery/getPictures');
+    console.log(this.$route.query);
+    if (this.$route.query) {
+      this.activeFilters = {
+        minPrice: parseInt(this.$route.query.minPrice || this.activeFilters.minPrice, 10),
+        maxPrice: parseInt(this.$route.query.maxPrice || this.activeFilters.maxPrice, 10),
+        minWidth: parseInt(this.$route.query.minWidth || this.activeFilters.minWidth, 10),
+        maxWidth: parseInt(this.$route.query.maxWidth || this.activeFilters.maxWidth, 10),
+        minHeight: parseInt(this.$route.query.minHeight || this.activeFilters.minHeight, 10),
+        maxHeight: parseInt(this.$route.query.maxHeight || this.activeFilters.maxHeight, 10)
+      };
+
+      if(this.$route.query.acrylic) {
+        this.activeFilters.acrylic = 'true' === this.$route.query.acrylic;
+      }
+      else {
+        this.activeFilters.acrylic = true;
+      }
+      if(this.$route.query.charcoal) {
+        this.activeFilters.charcoal = 'true' === this.$route.query.charcoal;
+      }
+      else {
+        this.activeFilters.charcoal = true;
+      }
+      if(this.$route.query.watercolor) {
+        this.activeFilters.watercolor = 'true' === this.$route.query.watercolor;
+      }
+      else {
+        this.activeFilters.watercolor = true;
+      }
+      if(this.$route.query.pencil) {
+        this.activeFilters.pencil = 'true' === this.$route.query.pencil;
+      }
+      else {
+        this.activeFilters.pencil = true;
+      }
+      if(this.$route.query.pastel) {
+        this.activeFilters.pastel = 'true' === this.$route.query.pastel;
+      }
+      else {
+        this.activeFilters.pastel = true;
+      }
+      if(this.$route.query.mixed_media) {
+        this.activeFilters.mixed_media = 'true' === this.$route.query.mixed_media;
+      }
+      else {
+        this.activeFilters.mixed_media = true;
+      }
+      if(this.$route.query.other) {
+        this.activeFilters.other = 'true' === this.$route.query.other;
+      }
+      else {
+        this.activeFilters.other = true;
+      }
+
+      // if(this.$route.query.sorter) {
+      //   this.sorter = this.$route.query.sorter;
+      // }
+    }
+  },
   computed: {
     filteredGallery() {
       const gallery = [...this.$store.getters['gallery/gallery']];
@@ -286,11 +283,14 @@ export default {
         return false;
       }
     }
-  // },
-  // watch: {
-  //   activeFilters(newValue) {
-  //     this.$router.replace({ query: newValue });
-  //   }
+  },
+  watch: {
+    activeFilters(newValue) {
+      this.$router.push({ query: newValue });
+    },
+    // sorter(newValue) {
+    //   this.$router.push({ query: newValue });
+    // }
   }
 };
 </script>
