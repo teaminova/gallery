@@ -22,9 +22,11 @@ export default {
     saveData(data) {
       this.$store.dispatch('gallery/editPicture', data);
       this.$router.replace('/gallery');
+      window.scrollTo(0,0);
     },
     cancelEdit() {
       this.$router.replace('/gallery/' + this.id);
+      window.scrollTo(0,0);
     }
   }
 };

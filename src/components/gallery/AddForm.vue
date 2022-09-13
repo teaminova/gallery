@@ -282,7 +282,7 @@ export default {
   data() {
     return {
       file: {
-        val: '',
+        val: 'test',
         isValid: true
       },
       title: {

@@ -9,7 +9,7 @@ export default {
       gallery: [
         {
           id: 'c1',
-          file: '',
+          file: 'flowers.jpg',
           title: 'Flowers in Bloom',
           price: 2000,
           width: 30,
@@ -21,7 +21,7 @@ export default {
         },
         {
           id: 'c2',
-          file: '',
+          file: 'around.png',
           title: 'Around the World',
           price: 3000,
           width: 120,
@@ -33,7 +33,7 @@ export default {
         },
         {
           id: 'c3',
-          file: '',
+          file: 'circles.jpg',
           title: 'Circles in the Sand',
           price: 1500,
           width: 20,
@@ -47,7 +47,7 @@ export default {
         },
         {
           id: 'c4',
-          file: '',
+          file: 'sunny.png',
           title: 'Sunny Day in Skopje',
           price: 12000,
           width: 160,
@@ -59,7 +59,7 @@ export default {
         },
         {
           id: 'c5',
-          file: '',
+          file: 'random.jpeg',
           title: 'Random Random Random',
           price: 5000,
           width: 100,
@@ -71,7 +71,7 @@ export default {
         },
         {
           id: 'c6',
-          file: '',
+          file: 'fall.jpg',
           title: 'The Final Fall',
           price: 4500,
           width: 80,
@@ -84,7 +84,7 @@ export default {
         },
         {
           id: 'c7',
-          file: '',
+          file: 'experimenting.jpg',
           title: 'Experimenting',
           price: 6800,
           width: 120,

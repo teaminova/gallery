@@ -127,6 +127,7 @@ export default {
     deletePicture() {
       this.$store.dispatch('gallery/deletePicture', this.id);
       this.$router.replace('/gallery');
+      window.scrollTo(0,0);
     }
   },
   created() {

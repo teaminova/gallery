@@ -23,9 +23,11 @@ export default {
     saveData(data) {
       this.$store.dispatch('gallery/addPicture', data);
       this.$router.replace('/gallery');
+      window.scrollTo(0,0);
     },
     cancelAdd() {
       this.$router.replace('/gallery');
+      window.scrollTo(0,0);
     }
   }
 };

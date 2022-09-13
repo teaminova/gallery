@@ -1,12 +1,12 @@
 <template>
   <header>
     <nav>
-      <h1><router-link to="/home">MARIJA KJURCHIEVA</router-link></h1>
+      <h1><router-link to="/home" @click='toTopOfPage'>MARIJA KJURCHIEVA</router-link></h1>
       <ul id="menu-bar">
-        <li><router-link to="/home">HOME</router-link></li>
-        <li><router-link to="/gallery">GALLERY</router-link></li>
-        <li><router-link to="/bio">MARIJA'S BIO</router-link></li>
-        <li><router-link to="/contactInfo">CONTACT INFO</router-link></li>
+        <li><router-link to="/home" @click='toTopOfPage'>HOME</router-link></li>
+        <li><router-link to="/gallery" @click='toTopOfPage'>GALLERY</router-link></li>
+        <li><router-link to="/bio" @click='toTopOfPage'>MARIJA'S BIO</router-link></li>
+        <li><router-link to="/contactInfo" @click='toTopOfPage'>CONTACT INFO</router-link></li>
       </ul>
       <div id="hamb">
         <base-button @click="showMenu" v-show="!menuIsVisible">&#9776;</base-button>
@@ -14,10 +14,10 @@
       </div>
       <div id="hamb-menu" v-show="menuIsVisible" @click="showMenu">
         <ul>
-          <li><router-link to="/home">HOME</router-link></li>
-          <li><router-link to="/gallery">GALLERY</router-link></li>
-          <li><router-link to="/bio">MARIJA'S BIO</router-link></li>
-          <li><router-link to="/contactInfo">CONTACT INFO</router-link></li>
+          <li><router-link to="/home" @click='toTopOfPage'>HOME</router-link></li>
+          <li><router-link to="/gallery" @click='toTopOfPage'>GALLERY</router-link></li>
+          <li><router-link to="/bio" @click='toTopOfPage'>MARIJA'S BIO</router-link></li>
+          <li><router-link to="/contactInfo" @click='toTopOfPage'>CONTACT INFO</router-link></li>
         </ul>
       </div>
     </nav>
@@ -37,6 +37,9 @@ export default {
   methods: {
     showMenu() {
       this.menuIsVisible = !this.menuIsVisible;
+    },
+    toTopOfPage() {
+      window.scrollTo(0,0);
     }
   }
 };

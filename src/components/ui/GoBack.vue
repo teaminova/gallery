@@ -12,6 +12,7 @@ export default {
   methods: {
     goBack() {
       this.$router.replace('/gallery');
+      window.scrollTo(0,0);
     }
   }
 };

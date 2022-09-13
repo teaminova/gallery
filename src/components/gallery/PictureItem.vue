@@ -8,7 +8,7 @@
     <h4>{{ price }} MKD</h4>
     <h4>{{ dimensions }}</h4>
     <div class="actions">
-      <base-button link :to="pictureDetailsLink">View Details</base-button>
+      <base-button link :to="pictureDetailsLink" @click='toTopOfPage'>View Details</base-button>
     </div>
   </li>
 </template>
@@ -25,6 +25,11 @@ export default {
     },
     pictureDetailsLink() {
       return this.$route.path + '/' + this.id;  // /gallery/c1
+    }
+  },
+  methods: {
+    toTopOfPage() {
+      window.scrollTo(0,0);
     }
   }
 };
