@@ -95,10 +95,13 @@
   <section>
     <base-card>
       <div class="controls">
-        <base-button mode="outline">Refresh</base-button>
+        <base-button mode="outline" @click="loadGallery">Refresh</base-button>
         <base-button link to="/addPic">Add</base-button>
       </div>
-      <ul v-if="hasGallery">
+      <div v-if="isLoading">
+        <base-spinner></base-spinner>
+      </div>
+      <ul v-else-if="hasGallery">
         <picture-item v-for="picture in filteredGallery"
                       :key="picture.id"
                       :id="picture.id"
@@ -120,12 +123,14 @@ import BaseButton from '@/components/ui/BaseButton';
 import PictureFilter from '@/components/gallery/PictureFilter';
 import PictureSort from '@/components/gallery/PictureSort';
 import PictureSearch from '@/components/gallery/PictureSearch';
+import BaseSpinner from '@/components/ui/BaseSpinner';
 
 export default {
   name: 'PicturesList',
-  components: { PictureSearch, PictureSort, PictureFilter, BaseButton, BaseCard, PictureItem },
+  components: { BaseSpinner, PictureSearch, PictureSort, PictureFilter, BaseButton, BaseCard, PictureItem },
   data() {
     return {
+      isLoading: false,
       chosenTheme: 'all',
       searcher: '',
       showFilterOptions: false,
@@ -149,7 +154,8 @@ export default {
     };
   },
   created() {
-    //this.$store.dispatch('gallery/getPictures');
+    this.loadGallery();
+
     console.log(this.$route.query);
     if (this.$route.query) {
       this.activeFilters = {
@@ -232,7 +238,7 @@ export default {
       });
     },
     hasGallery() {
-      return this.$store.getters['gallery/hasGallery'];
+      return !this.isLoading && this.$store.getters['gallery/hasGallery'];
     },
     filterButtonMode() {
       if (!this.showFilterOptions) {
@@ -298,6 +304,11 @@ export default {
       else {
         return false;
       }
+    },
+    async loadGallery() {
+      this.isLoading = true;
+      await this.$store.dispatch('gallery/loadGallery');
+      this.isLoading = false;
     }
   },
   watch: {

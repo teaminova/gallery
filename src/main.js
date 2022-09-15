@@ -8,6 +8,7 @@ import BaseButton from '@/components/ui/BaseButton';
 import BaseBadge from '@/components/ui/BaseBadge';
 import BaseDialog from '@/components/ui/BaseDialog';
 import GoBack from '@/components/ui/GoBack';
+import BaseSpinner from '@/components/ui/BaseSpinner';
 
 const app = createApp(App)
 
@@ -19,5 +20,6 @@ app.component('base-button', BaseButton);
 app.component('base-badge', BaseBadge);
 app.component('base-dialog', BaseDialog);
 app.component('go-back', GoBack);
+app.component('base-spinner', BaseSpinner);
 
 app.mount('#app');
