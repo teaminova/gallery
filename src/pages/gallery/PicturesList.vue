@@ -1,4 +1,7 @@
 <template>
+  <error-dialog :show="!!error" title="An error occurred!" @close="handleError">
+    <p>{{ error }}</p>
+  </error-dialog>
   <section id="selected_menu">
     <base-card class="StartHeaderBgColor">
       <div class="start_header">
@@ -124,13 +127,15 @@ import PictureFilter from '@/components/gallery/PictureFilter';
 import PictureSort from '@/components/gallery/PictureSort';
 import PictureSearch from '@/components/gallery/PictureSearch';
 import BaseSpinner from '@/components/ui/BaseSpinner';
+import ErrorDialog from '@/components/ui/ErrorDialog';
 
 export default {
   name: 'PicturesList',
-  components: { BaseSpinner, PictureSearch, PictureSort, PictureFilter, BaseButton, BaseCard, PictureItem },
+  components: { ErrorDialog, BaseSpinner, PictureSearch, PictureSort, PictureFilter, BaseButton, BaseCard, PictureItem },
   data() {
     return {
       isLoading: false,
+      error: null,
       chosenTheme: 'all',
       searcher: '',
       showFilterOptions: false,
@@ -307,8 +312,15 @@ export default {
     },
     async loadGallery() {
       this.isLoading = true;
-      await this.$store.dispatch('gallery/loadGallery');
+      try {
+        await this.$store.dispatch('gallery/loadGallery');
+      } catch (error) {
+        this.error = error.message || 'Something went wrong!';
+      }
       this.isLoading = false;
+    },
+    handleError() {
+      this.error = null;
     }
   },
   watch: {

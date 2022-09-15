@@ -9,6 +9,7 @@ import BaseBadge from '@/components/ui/BaseBadge';
 import BaseDialog from '@/components/ui/BaseDialog';
 import GoBack from '@/components/ui/GoBack';
 import BaseSpinner from '@/components/ui/BaseSpinner';
+import ErrorDialog from '@/components/ui/ErrorDialog';
 
 const app = createApp(App)
 
@@ -21,5 +22,6 @@ app.component('base-badge', BaseBadge);
 app.component('base-dialog', BaseDialog);
 app.component('go-back', GoBack);
 app.component('base-spinner', BaseSpinner);
+app.component('error-dialog', ErrorDialog);
 
 app.mount('#app');
