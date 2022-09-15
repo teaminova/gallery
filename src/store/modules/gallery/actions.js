@@ -1,7 +1,7 @@
 export default {
-  addPicture(context, data) {
+  async addPicture(context, data) {
     const pictureData = {
-      id: 'c8',
+      id: new Date().toISOString(),
       file: data.fil,
       title: data.tit,
       price: data.pri,
@@ -12,6 +12,20 @@ export default {
       year: data.yea,
       description: data.des
     };
+
+    // const response = await fetch('https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery.json', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(pictureData)
+    // });
+    //
+    // const responseData = await response.json();
+    //
+    // if (!response.ok) {
+    //   // error...
+    // }
 
     context.commit('addPicture', pictureData);
   },
@@ -32,8 +46,6 @@ export default {
     context.commit('editPicture', pictureData);
   },
   deletePicture(context, index) {
-    const id = index;
-
-    context.commit('deletePicture', id);
+    context.commit('deletePicture', index);
   }
 };
