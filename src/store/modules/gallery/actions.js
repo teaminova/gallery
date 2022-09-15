@@ -98,7 +98,10 @@ export default {
       // error...
     }
 
-    context.commit('editPicture', pictureId);
+    context.commit('editPicture', {
+      ...pictureData,
+      id: pictureId
+    });
   },
   async deletePicture(context, index) {
     const response = await fetch(`https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${index}.json`,
