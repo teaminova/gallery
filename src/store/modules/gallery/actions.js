@@ -1,7 +1,8 @@
 export default {
   async addPicture(context, data) {
+    const pictureId = data.tit.split(" ").join("").replace(/[^a-zA-Z0-9 ]/g);
     const pictureData = {
-      id: new Date().toISOString(),
+     // id: new Date().toISOString(),
       file: data.fil,
       title: data.tit,
       price: data.pri,
@@ -13,12 +14,13 @@ export default {
       description: data.des
     };
 
-    const response = await fetch('https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery.json',
+    const response = await fetch(
+      `https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${pictureId}.json`,
       {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        method: 'PUT',
+        // headers: {
+        //   'Content-Type': 'application/json'
+        // },
         body: JSON.stringify(pictureData)
       });
 
@@ -28,7 +30,10 @@ export default {
       // error...
     }
 
-    context.commit('addPicture', pictureData);
+    context.commit('addPicture', {
+      ...pictureData,
+      id: pictureId
+    });
   },
   async loadGallery(context) {
     const response = await fetch(
@@ -45,7 +50,7 @@ export default {
 
     for (const key in responseData) {
       const picture = {
-        id: responseData[key].id,
+        id: key,
         file: responseData[key].file,
         title: responseData[key].title,
         price: responseData[key].price,
@@ -62,9 +67,10 @@ export default {
     context.commit('setGallery', gallery);
   },
 
-  editPicture(context, data) {
+  async editPicture(context, data) {
+    const pictureId = data.id;
     const pictureData = {
-      id: data.id,
+     // id: data.id,
       file: data.fil,
       title: data.tit,
       price: data.pri,
@@ -76,9 +82,40 @@ export default {
       description: data.des
     };
 
-    context.commit('editPicture', pictureData);
+    const response = await fetch(
+      `https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${pictureId}.json`,
+      {
+        method: 'PUT',
+        // headers: {
+        //   'Content-Type': 'application/json'
+        // },
+        body: JSON.stringify(pictureData)
+      });
+
+    //const responseData = await response.json();
+
+    if (!response.ok) {
+      // error...
+    }
+
+    context.commit('editPicture', pictureId);
   },
-  deletePicture(context, index) {
+  async deletePicture(context, index) {
+    const response = await fetch(`https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${index}.json`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: null
+      });
+
+    //const responseData = await response.json();
+
+    if (!response.ok) {
+      // error...
+    }
+
     context.commit('deletePicture', index);
   }
 };

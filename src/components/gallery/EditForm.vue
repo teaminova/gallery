@@ -6,6 +6,7 @@
         type="file"
         id="file"
         class="file_input"
+        accept="image/*"
         @blur="clearValidity('file')"/>
       <p v-if="!file.isValid">Image file must be attached.</p>
     </div>

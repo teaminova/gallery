@@ -114,7 +114,7 @@
                       :height="picture.height"
         ></picture-item>
       </ul>
-      <h3 v-else>No pictures found.</h3>
+      <h3 v-else class='noPicturesFound'>No pictures found.</h3>
     </base-card>
   </section>
 </template>
@@ -438,5 +438,10 @@ ul {
 .controls {
   display: flex;
   justify-content: space-between;
+}
+
+.noPicturesFound {
+  width: 100%;
+  text-align: center;
 }
 </style>
