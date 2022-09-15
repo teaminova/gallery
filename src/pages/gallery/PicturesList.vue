@@ -78,8 +78,8 @@
           <picture-search @change-searcher="setSearcher"></picture-search>
         </div>
         <div>
-          <base-button @click="filterOptions" mode="{ 'outline': !showFilterOptions }" >Filter</base-button>
-          <base-button @click="sortOptions" mode="{ 'outline': !showSortOptions }" >Sort</base-button>
+          <base-button @click="filterOptions" :mode="filterButtonMode" >Filter</base-button>
+          <base-button @click="sortOptions" :mode="sortButtonMode" >Sort</base-button>
         </div>
       </div>
       <section v-show="showFilterOptions">
@@ -233,6 +233,22 @@ export default {
     },
     hasGallery() {
       return this.$store.getters['gallery/hasGallery'];
+    },
+    filterButtonMode() {
+      if (!this.showFilterOptions) {
+        return 'outline';
+      }
+      else {
+        return '';
+      }
+    },
+    sortButtonMode() {
+      if (!this.showSortOptions) {
+        return 'outline';
+      }
+      else {
+        return '';
+      }
     }
   },
   methods: {
