@@ -11,6 +11,7 @@ export default {
       theme: data.the,
       techniques: data.tec,
       year: data.yea,
+      uploadDate: Date.now(),
       description: data.des
     };
 
@@ -35,7 +36,11 @@ export default {
       id: pictureId
     });
   },
-  async loadGallery(context) {
+  async loadGallery(context, payload) {
+    if (!payload.forceRefresh && !context.getters.shouldUpdate) {
+      return;
+    }
+
     const response = await fetch(
       'https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery.json'
     );
@@ -59,12 +64,14 @@ export default {
         theme: responseData[key].theme,
         techniques: responseData[key].techniques,
         year: responseData[key].year,
+        uploadDate: responseData[key].uploadDate,
         description: responseData[key].description
       };
       gallery.push(picture);
     }
 
     context.commit('setGallery', gallery);
+    context.commit('setFetchTimestamp');
   },
 
   async editPicture(context, data) {
@@ -79,6 +86,7 @@ export default {
       theme: data.the,
       techniques: data.tec,
       year: data.yea,
+      uploadDate: data.upl,
       description: data.des
     };
 

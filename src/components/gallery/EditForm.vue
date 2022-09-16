@@ -315,6 +315,7 @@ export default {
         val: this.selectedPicture.year,
         isValid: true
       },
+      uploadDate: this.selectedPicture.uploadDate,
       description: {
         val: this.selectedPicture.description,
         isValid: true
@@ -383,6 +384,7 @@ export default {
         the: this.theme.val,
         tec: this.techniques.val,
         yea: this.year.val,
+        upl: this.uploadDate,
         des: this.description.val
       };
 

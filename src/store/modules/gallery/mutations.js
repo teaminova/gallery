@@ -5,7 +5,10 @@ export default {
   setGallery(state, payload) {
     state.gallery = payload;
   },
-
+  setFetchTimestamp(state)
+  {
+    state.lastFetch = new Date().getTime();
+  },
   editPicture(state, payload) {
     const index = state.gallery.findIndex(
       (picture) => picture.id === payload.id

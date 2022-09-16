@@ -98,7 +98,7 @@
   <section>
     <base-card>
       <div class="controls">
-        <base-button mode="outline" @click="loadGallery">Refresh</base-button>
+        <base-button mode="outline" @click="loadGallery(true)">Refresh</base-button>
         <base-button link to="/addPic">Add</base-button>
       </div>
       <div v-if="isLoading">
@@ -292,7 +292,8 @@ export default {
     },
     sortGallery(gallery) {
       if (this.sorter === 'newest'){
-        return [...this.$store.getters['gallery/gallery']].reverse();
+        //return [...this.$store.getters['gallery/gallery']].reverse();
+        return gallery.sort((a,b) => (a.uploadDate < b.uploadDate) ? 1 : -1);
       }
       else if (this.sorter === 'a_z') {
         return gallery.sort((a,b) => (a.title > b.title) ? 1 : -1);
@@ -310,10 +311,10 @@ export default {
         return false;
       }
     },
-    async loadGallery() {
+    async loadGallery(refresh = false) {
       this.isLoading = true;
       try {
-        await this.$store.dispatch('gallery/loadGallery');
+        await this.$store.dispatch('gallery/loadGallery', {forceRefresh: refresh});
       } catch (error) {
         this.error = error.message || 'Something went wrong!';
       }

@@ -104,6 +104,9 @@ export default {
     year() {
       return this.selectedPicture.year;
     },
+    uploadDate() {
+      return this.selectedPicture.uploadDate;
+    },
     description() {
       return this.selectedPicture.description;
     },
