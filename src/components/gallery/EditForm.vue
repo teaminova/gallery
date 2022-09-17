@@ -6,7 +6,7 @@
         type="button"
         mode="outline"
         @click="onPickFile"
-      >Upload Image</base-button>
+      >Change Image</base-button>
       <input
         type="file"
         style="display: none"
@@ -18,7 +18,7 @@
         @change="onFilePicked"
       />
       <div class='img_div'>
-        <img :src="imageUrl.val" style="max-width: 30rem; max-height: 10rem;" alt="" >
+        <img :src="imageUrl.val" style="max-width: 30rem; max-height: 15rem;" alt="" >
       </div>
       <p v-if="!imageUrl.isValid">Image file must be attached.</p>
     </div>
@@ -288,6 +288,7 @@
 
 <script>
 import BaseButton from '@/components/ui/BaseButton';
+
 export default {
   name: 'EditForm',
   components: { BaseButton },
@@ -295,10 +296,12 @@ export default {
   emits: ['save-data', 'cancel-edit'],
   data() {
     return {
+      //initialUrl: this.selectedPicture.imageUrl,
       imageUrl: {
         val: this.selectedPicture.imageUrl,
         isValid: true
       },
+      fileName: this.selectedPicture.fileName,
       title: {
         val: this.selectedPicture.title,
         isValid: true
@@ -332,6 +335,7 @@ export default {
         val: this.selectedPicture.description,
         isValid: true
       },
+      image: null,
       formIsValid: true
     };
   },
@@ -341,7 +345,7 @@ export default {
     },
     onFilePicked(event) {
       const files = event.target.files;
-      let filename = files[0].filename;
+      let filename = files[0].name;
       if (filename.lastIndexOf('.') <= 0) {
         return alert('Please attach a valid file!');
       }
@@ -350,6 +354,7 @@ export default {
         this.imageUrl.val = fileReader.result
       });
       fileReader.readAsDataURL(files[0]);
+      this.image = files[0];
     },
     clearValidity(input) {
       this[input].isValid = true;
@@ -403,7 +408,9 @@ export default {
 
       const formData = {
         id: this.selectedPicture.id,
-        ima: this.imageUrl.val,
+        ima: this.image,
+        iURL: this.imageUrl.val,
+        fil: this.fileName,
         tit: this.title.val,
         pri: this.price.val,
         wid: this.width.val,

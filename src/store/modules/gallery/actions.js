@@ -14,7 +14,7 @@ export default {
 
     const pictureId = data.tit.split(" ").join("").replace(/[^a-zA-Z0-9 ]/g);
     const pictureData = {
-       id: pictureId,
+      id: pictureId,
       imageUrl: imageRef,
       fileName: data.ima.name,
       title: data.tit,
@@ -91,11 +91,24 @@ export default {
   },
 
   async editPicture(context, data) {
+    let imageRef;
+    let imageName;
+
+    if (data.ima === null) {
+      imageRef = data.iURL;
+      imageName = data.fil;
+    }
+    else {
+      imageName = data.ima.name;
+      imageRef = await addImage(data.ima);
+      await deleteImage(data.fil);
+    }
+
     const pictureId = data.id;
     const pictureData = {
       id: data.id,
-      imageUrl: data.ima,
-      fileName: data.ima.name,
+      imageUrl: imageRef,
+      fileName: imageName,
       title: data.tit,
       price: data.pri,
       width: data.wid,
@@ -106,6 +119,7 @@ export default {
       uploadDate: data.upl,
       description: data.des
     };
+
 
     const response = await fetch(
       `https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${pictureId}.json`,
@@ -150,8 +164,6 @@ export default {
     if (!response.ok) {
       // error...
     }
-
-    console.log(fileName);
 
     await deleteImage(fileName);
 

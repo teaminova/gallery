@@ -18,7 +18,7 @@
         @change="onFilePicked"
       />
       <div class='img_div'>
-        <img :src="imageUrl.val" style="max-width: 30rem; max-height: 10rem;" alt="" >
+        <img :src="imageUrl.val" style="max-width: 30rem; max-height: 15rem;" alt="" >
       </div>
       <p v-if="!imageUrl.isValid">Image file must be attached.</p>
     </div>
