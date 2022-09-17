@@ -52,6 +52,8 @@ export async function addImage(imageFile) {
 export async function deleteImage(fileName) {
     const imageRef = ref(storage, fileName);
 
+    console.log(fileName);
+
     try {
         await deleteObject(imageRef).then(() => {
             console.log('Image file successfully deleted!');

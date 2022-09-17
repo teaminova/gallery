@@ -1,6 +1,5 @@
 <template>
   <li>
-    <!-- tuka ke stoi image file-ot -->
     <div class="img-div">
       <img alt="picture image" :src="imageUrl">
     </div>

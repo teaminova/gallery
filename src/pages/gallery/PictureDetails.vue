@@ -17,7 +17,6 @@
       </div>
     </base-card>
     <base-card class="details_container">
-      <!-- tuka ke stoi image file-ot -->
       <div class="img-div">
         <img alt="picture image" :src="imageUrl">
       </div>
@@ -131,7 +130,7 @@ export default {
       this.deleteDialogIsVisible = !this.deleteDialogIsVisible;
     },
     deletePicture() {
-      this.$store.dispatch('gallery/deletePicture', this.id, this.fileName);
+      this.$store.dispatch('gallery/deletePicture', this.id);
       this.$router.replace('/gallery');
       window.scrollTo(0,0);
     }
