@@ -19,7 +19,7 @@
     <base-card class="details_container">
       <!-- tuka ke stoi image file-ot -->
       <div class="img-div">
-        <img alt="picture image" src="../../components/assets/placeholder_image.jpg"> // :src="imageUrl"
+        <img alt="picture image" :src="imageUrl">
       </div>
       <div class="details">
         <h2>{{ title }}</h2>
@@ -86,6 +86,9 @@ export default {
     imageUrl() {
       return this.selectedPicture.imageUrl;
     },
+    fileName() {
+      return this.selectedPicture.fileName;
+    },
     dimensions() {
       return this.selectedPicture.width + 'cm x ' + this.selectedPicture.height + 'cm';
     },
@@ -128,7 +131,7 @@ export default {
       this.deleteDialogIsVisible = !this.deleteDialogIsVisible;
     },
     deletePicture() {
-      this.$store.dispatch('gallery/deletePicture', this.id);
+      this.$store.dispatch('gallery/deletePicture', this.id, this.fileName);
       this.$router.replace('/gallery');
       window.scrollTo(0,0);
     }

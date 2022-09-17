@@ -108,6 +108,7 @@
         <picture-item v-for="picture in filteredGallery"
                       :key="picture.id"
                       :id="picture.id"
+                      :imageUrl="picture.imageUrl"
                       :title="picture.title"
                       :price="picture.price"
                       :width="picture.width"

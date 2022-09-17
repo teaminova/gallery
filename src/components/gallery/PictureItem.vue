@@ -2,7 +2,7 @@
   <li>
     <!-- tuka ke stoi image file-ot -->
     <div class="img-div">
-      <img alt="picture image" src="../assets/placeholder_image.jpg"> // :src="imageUrl"
+      <img alt="picture image" :src="imageUrl">
     </div>
     <h3>{{ title }}</h3>
     <h4>{{ price }} MKD</h4>

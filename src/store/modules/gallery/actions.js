@@ -1,31 +1,22 @@
+import { addImage, deleteImage } from "@/firebaseConfig";
+
 export default {
   async addPicture(context, data) {
     if(data.ima === null) {
-      console.log('image data is null');
+      console.log('Image data is null');
     }
 
+    const imageRef = await addImage(data.ima);
 
-    const response = await fetch(
-      'gs://art-gallery-14576.appspot.com/',
-      {
-        method: 'PUT',
-        // headers: {
-        //   'Content-Type': 'application/json'
-        // },
-        body: data.ima
-      });
-
-
-    //const responseData = await response.json();
-
-    if (!response.ok) {
+    if (!imageRef.ok) {
       // error...
     }
-/*
+
     const pictureId = data.tit.split(" ").join("").replace(/[^a-zA-Z0-9 ]/g);
     const pictureData = {
      // id: new Date().toISOString(),
-      imageUrl: responseData,
+      imageUrl: imageRef,
+      fileName: data.ima.name,
       title: data.tit,
       price: data.pri,
       width: data.wid,
@@ -58,7 +49,7 @@ export default {
       ...pictureData,
       id: pictureId
     });
-     */
+
   },
   async loadGallery(context, payload) {
     if (!payload.forceRefresh && !context.getters.shouldUpdate) {
@@ -81,6 +72,7 @@ export default {
       const picture = {
         id: key,
         imageUrl: responseData[key].imageUrl,
+        fileName: responseData[key].fileName,
         title: responseData[key].title,
         price: responseData[key].price,
         width: responseData[key].width,
@@ -103,6 +95,7 @@ export default {
     const pictureData = {
      // id: data.id,
       imageUrl: data.ima,
+      fileName: data.ima.name,
       title: data.tit,
       price: data.pri,
       width: data.wid,
@@ -135,7 +128,7 @@ export default {
       id: pictureId
     });
   },
-  async deletePicture(context, index) {
+  async deletePicture(context, index, fileName) {
     const response = await fetch(`https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${index}.json`,
       {
         method: 'DELETE',
@@ -150,6 +143,8 @@ export default {
     if (!response.ok) {
       // error...
     }
+
+    await deleteImage(fileName);
 
     context.commit('deletePicture', index);
   }

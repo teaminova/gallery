@@ -17,7 +17,9 @@
         @blur="clearValidity('imageUrl')"
         @change="onFilePicked"
       />
-      <img :src="imageUrl" style="max-width: 5rem; max-height: 5rem;" alt="Image file" >
+      <div class='img_div'>
+        <img :src="imageUrl.val" style="max-width: 30rem; max-height: 10rem;" alt="" >
+      </div>
       <p v-if="!imageUrl.isValid">Image file must be attached.</p>
     </div>
     <div class="form-control" :class="{invalid: !title.isValid}">
@@ -423,6 +425,18 @@ export default {
 </script>
 
 <style scoped>
+.img_div {
+  max-width: 30rem;
+  max-height: 30rem;
+  margin: auto;
+  text-align: center;
+}
+
+.img_div img {
+  margin: 0.5rem 0;
+}
+
+
 .form-control {
   margin: 0.5rem 0 1rem;
   padding-left: 2rem;

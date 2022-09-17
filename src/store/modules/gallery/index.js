@@ -11,6 +11,7 @@ export default {
         {
           id: 'c1',
           imageUrl: 'flowers.jpg',
+          fileName: 'flowers.jpg',
           title: 'Flowers in Bloom',
           price: 2000,
           width: 30,
@@ -24,6 +25,7 @@ export default {
         {
           id: 'c2',
           imageUrl: 'around.png',
+          fileName: 'flowers.jpg',
           title: 'Around the World',
           price: 3000,
           width: 120,
@@ -37,6 +39,7 @@ export default {
         {
           id: 'c3',
           imageUrl: 'circles.jpg',
+          fileName: 'flowers.jpg',
           title: 'Circles in the Sand',
           price: 1500,
           width: 20,
@@ -52,6 +55,7 @@ export default {
         {
           id: 'c4',
           imageUrl: 'sunny.png',
+          fileName: 'flowers.jpg',
           title: 'Sunny Day in Skopje',
           price: 12000,
           width: 160,
@@ -65,6 +69,7 @@ export default {
         {
           id: 'c5',
           imageUrl: 'random.jpeg',
+          fileName: 'flowers.jpg',
           title: 'Random Random Random',
           price: 5000,
           width: 100,
@@ -78,6 +83,7 @@ export default {
         {
           id: 'c6',
           imageUrl: 'fall.jpg',
+          fileName: 'flowers.jpg',
           title: 'The Final Fall',
           price: 4500,
           width: 80,
@@ -92,6 +98,7 @@ export default {
         {
           id: 'c7',
           imageUrl: 'experimenting.jpg',
+          fileName: 'flowers.jpg',
           title: 'Experimenting',
           price: 6800,
           width: 120,
