@@ -2,7 +2,7 @@
   <li>
     <!-- tuka ke stoi image file-ot -->
     <div class="img-div">
-      <img alt="picture image" src="../assets/placeholder_image.jpg">
+      <img alt="picture image" src="../assets/placeholder_image.jpg"> // :src="imageUrl"
     </div>
     <h3>{{ title }}</h3>
     <h4>{{ price }} MKD</h4>
@@ -18,7 +18,7 @@ import BaseButton from '@/components/ui/BaseButton';
 export default {
   name: 'PictureItem',
   components: { BaseButton },
-  props: ['id', 'file', 'title', 'price', 'width', 'height'],
+  props: ['id', 'imageUrl', 'title', 'price', 'width', 'height'],
   computed: {
     dimensions() {
       return this.width + 'cm x ' + this.height + 'cm';

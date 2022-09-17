@@ -1,9 +1,31 @@
 export default {
   async addPicture(context, data) {
+    if(data.ima === null) {
+      console.log('image data is null');
+    }
+
+
+    const response = await fetch(
+      'gs://art-gallery-14576.appspot.com/',
+      {
+        method: 'PUT',
+        // headers: {
+        //   'Content-Type': 'application/json'
+        // },
+        body: data.ima
+      });
+
+
+    //const responseData = await response.json();
+
+    if (!response.ok) {
+      // error...
+    }
+/*
     const pictureId = data.tit.split(" ").join("").replace(/[^a-zA-Z0-9 ]/g);
     const pictureData = {
      // id: new Date().toISOString(),
-      file: data.fil,
+      imageUrl: responseData,
       title: data.tit,
       price: data.pri,
       width: data.wid,
@@ -14,6 +36,7 @@ export default {
       uploadDate: Date.now(),
       description: data.des
     };
+
 
     const response = await fetch(
       `https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${pictureId}.json`,
@@ -35,6 +58,7 @@ export default {
       ...pictureData,
       id: pictureId
     });
+     */
   },
   async loadGallery(context, payload) {
     if (!payload.forceRefresh && !context.getters.shouldUpdate) {
@@ -56,7 +80,7 @@ export default {
     for (const key in responseData) {
       const picture = {
         id: key,
-        file: responseData[key].file,
+        imageUrl: responseData[key].imageUrl,
         title: responseData[key].title,
         price: responseData[key].price,
         width: responseData[key].width,
@@ -78,7 +102,7 @@ export default {
     const pictureId = data.id;
     const pictureData = {
      // id: data.id,
-      file: data.fil,
+      imageUrl: data.ima,
       title: data.tit,
       price: data.pri,
       width: data.wid,

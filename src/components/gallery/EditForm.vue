@@ -1,14 +1,24 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control" :class="{invalid: !file.isValid}">
-      <label for="file">Attach file here: </label>
+    <div class="form-control" :class="{invalid: !imageUrl.isValid}">
+      <!-- <label for="file">Attach file here: </label> -->
+      <base-button
+        type="button"
+        mode="outline"
+        @click="onPickFile"
+      >Upload Image</base-button>
       <input
         type="file"
-        id="file"
-        class="file_input"
+        style="display: none"
+        ref="fileInput"
         accept="image/*"
-        @blur="clearValidity('file')"/>
-      <p v-if="!file.isValid">Image file must be attached.</p>
+        id="imageUrl"
+        class="file_input"
+        @blur="clearValidity('imageUrl')"
+        @change="onFilePicked"
+      />
+      <img :src="imageUrl" style="max-width: 5rem; max-height: 5rem;" alt="Image file" >
+      <p v-if="!imageUrl.isValid">Image file must be attached.</p>
     </div>
     <div class="form-control" :class="{invalid: !title.isValid}">
       <label for="title">Title: </label>
@@ -283,8 +293,8 @@ export default {
   emits: ['save-data', 'cancel-edit'],
   data() {
     return {
-      file: {
-        val: this.selectedPicture.file,
+      imageUrl: {
+        val: this.selectedPicture.imageUrl,
         isValid: true
       },
       title: {
@@ -324,14 +334,29 @@ export default {
     };
   },
   methods: {
+    onPickFile() {
+      this.$refs.fileInput.click();
+    },
+    onFilePicked(event) {
+      const files = event.target.files;
+      let filename = files[0].filename;
+      if (filename.lastIndexOf('.') <= 0) {
+        return alert('Please attach a valid file!');
+      }
+      const fileReader = new FileReader();
+      fileReader.addEventListener('load', () => {
+        this.imageUrl.val = fileReader.result
+      });
+      fileReader.readAsDataURL(files[0]);
+    },
     clearValidity(input) {
       this[input].isValid = true;
     },
     validateForm() {
       this.formIsValid = true;
 
-      if (this.file.val === '') {
-        this.file.isValid = false;
+      if (this.imageUrl.val === '') {
+        this.imageUrl.isValid = false;
         this.formIsValid = false;
       }
       if (this.title.val === '') {
@@ -376,7 +401,7 @@ export default {
 
       const formData = {
         id: this.selectedPicture.id,
-        fil: this.file.val,
+        ima: this.imageUrl.val,
         tit: this.title.val,
         pri: this.price.val,
         wid: this.width.val,

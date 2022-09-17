@@ -19,7 +19,7 @@
     <base-card class="details_container">
       <!-- tuka ke stoi image file-ot -->
       <div class="img-div">
-        <img alt="picture image" src="../../components/assets/placeholder_image.jpg">
+        <img alt="picture image" src="../../components/assets/placeholder_image.jpg"> // :src="imageUrl"
       </div>
       <div class="details">
         <h2>{{ title }}</h2>
@@ -83,8 +83,8 @@ export default {
     };
   },
   computed: {
-    file() {
-      return this.selectedPicture.file;
+    imageUrl() {
+      return this.selectedPicture.imageUrl;
     },
     dimensions() {
       return this.selectedPicture.width + 'cm x ' + this.selectedPicture.height + 'cm';
