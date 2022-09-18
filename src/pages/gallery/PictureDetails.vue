@@ -36,7 +36,7 @@
       </div>
     </base-card>
   </section>
-  <section class="contactSec">
+  <section class="contactSec" v-if="!isLoggedIn">
     <base-card>
       <header>
         <h2>Interested? Contact Marija!</h2>
@@ -49,7 +49,7 @@
       </header>
     </base-card>
   </section>
-  <section>
+  <section v-if="isLoggedIn">
     <base-card>
       <div class="controls">
         <base-button link :to="editLink">Edit</base-button>
@@ -82,6 +82,9 @@ export default {
     };
   },
   computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
     imageUrl() {
       return this.selectedPicture.imageUrl;
     },
@@ -181,6 +184,10 @@ header {
 
 .details{
   max-width: 20rem;
+}
+
+.contactSec {
+  margin-bottom: 2rem;
 }
 
 .contactSec div {

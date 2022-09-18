@@ -99,7 +99,7 @@
     <base-card>
       <div class="controls">
         <base-button mode="outline" @click="loadGallery(true)">Refresh</base-button>
-        <base-button link to="/addPic">Add</base-button>
+        <base-button v-if="isLoggedIn" link to="/addPic">Add</base-button>
       </div>
       <div v-if="isLoading">
         <base-spinner></base-spinner>
@@ -222,6 +222,9 @@ export default {
     }
   },
   computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
     filteredGallery() {
       const gallery = [...this.$store.getters['gallery/gallery']];
       const sortedGallery = this.sortGallery(gallery);

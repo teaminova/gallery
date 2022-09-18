@@ -1,14 +1,30 @@
 <template>
   <section>
-    <div id="admin-button">
-      <button>Admin settings</button>
+    <div class="admin-button" v-if="!isLoggedIn && !authRoute">
+      <router-link to="/auth">Admin Login</router-link>
+    </div>
+    <div class="admin-button" v-if="isLoggedIn">
+      <button @click="logout">Admin Logout</button>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: "TheFooter"
+  name: "TheFooter",
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
+    authRoute() {
+      return this.$route.path == '/auth';
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
+    }
+  }
 }
 </script>
 
@@ -22,7 +38,8 @@ section {
   align-items: center;
 }
 
-#admin-button button {
+.admin-button button,
+.admin-button a {
   text-decoration: none;
   /* color: #f391e3; */
   color: #f67e7d;
@@ -33,8 +50,10 @@ section {
   margin: 0.5rem;
 }
 
-#admin-button button:hover,
-#admin-button button:active {
+.admin-button button:hover,
+.admin-button button:active,
+.admin-button a:hover,
+.admin-button a:active {
   border: 1px solid #f67e7d;
 }
 </style>
