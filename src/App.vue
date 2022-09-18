@@ -1,17 +1,24 @@
 <template>
-    <the-header></the-header>
-    <router-view></router-view>
+  <div id="container">
+    <div id="header">
+      <the-header></the-header>
+    </div>
+    <div id="body">
+      <router-view></router-view>
+    </div>
+    <div id="footer">
+      <the-footer></the-footer>
+    </div>
+  </div>
 </template>
 
 <script>
 import TheHeader from '@/components/layout/TheHeader';
+import TheFooter from "@/components/layout/TheFooter";
 
 export default {
     name: 'App',
-    components: {
-        TheHeader
-    }
-
+    components: {TheFooter, TheHeader }
 };
 </script>
 
@@ -24,7 +31,8 @@ export default {
 
 html {
     font-family: "Roboto", sans-serif;
-    min-height: 100%;
+    height: 100%;
+  margin: 0;
 
     background: #f4c2c2 url("components/assets/background_image.jpg") no-repeat fixed center center;
     -webkit-background-size: 100%;
@@ -36,10 +44,29 @@ html {
 body {
     margin: 0;
     min-height: 100%;
+  position: relative;
 }
 
-the-header {
+#container {
+  min-height: 100%;
+}
+
+the-header, #header {
     position: sticky;
     top: 0;
+    z-index: 50;
 }
+
+#body {
+  padding-bottom: 5rem;
+}
+
+
+#footer {
+    position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5rem;
+}
+
 </style>

@@ -218,15 +218,15 @@ header {
   margin-right: 1rem;
    */
   margin: 1rem;
-  width: 19rem;
-  height: 19rem;
+  width: 18rem;
+  height: 18rem;
   border: 1px solid grey;
   position: relative;
 }
 
 img {
-  max-width: 18.9rem;
-  max-height: 18.9rem;
+  max-width: 17.9rem;
+  max-height: 17.9rem;
   margin: auto;
   position: absolute;
   left:0;
