@@ -12,6 +12,7 @@ import BioPage from '@/pages/bio/BioPage';
 import ContactPage from '@/pages/contact/ContactPage';
 
 import NotFound from '@/pages/NotFound';
+import AdminAuth from "@/pages/auth/AdminAuth";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -28,6 +29,7 @@ const router = createRouter({
       ]
     },
     { path: '/addPic', component: AddPicture },
+    { path: '/auth', component: AdminAuth },
     { path: '/bio', component: BioPage },
     { path: '/contactInfo', component: ContactPage },
     { path: '/:notFound(.*)', component: NotFound }

@@ -28,9 +28,12 @@ export default {
       description: data.des
     };
 
+    const token = context.rootGetters.token;
+
 
     const response = await fetch(
-      `https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${pictureId}.json`,
+      `https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${pictureId}.json?auth=` +
+              token,
       {
         method: 'PUT',
         // headers: {
@@ -120,9 +123,11 @@ export default {
       description: data.des
     };
 
+    const token = context.rootGetters.token;
 
     const response = await fetch(
-      `https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${pictureId}.json`,
+      `https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${pictureId}.json?auth=` +
+              token,
       {
         method: 'PUT',
         // headers: {
@@ -150,7 +155,10 @@ export default {
 
     const fileName = responseData1[index].fileName;
 
-    const response = await fetch(`https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${index}.json`,
+    const token = context.rootGetters.token;
+
+    const response = await fetch(`https://art-gallery-14576-default-rtdb.europe-west1.firebasedatabase.app/gallery/${index}.json?auth=` +
+                                        token,
       {
         method: 'DELETE',
         headers: {

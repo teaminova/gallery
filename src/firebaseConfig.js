@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
+import { getAuth,  signInWithEmailAndPassword } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,6 +25,9 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Cloud Storage and get a reference to the service
 const storage = getStorage(app);
+
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(app);
 
 // Create a storage reference from our storage service
 // const storageRef = ref(storage);
@@ -61,4 +65,22 @@ export async function deleteImage(fileName) {
     } catch(e) {
         console.error('Error deleting image file!')
     }
+}
+
+export async function adminSignIn(email, password) {
+    let adminIsSignedIn = false;
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            // ...
+            console.log(user + userCredential);
+            adminIsSignedIn = true;
+        })
+        .catch((error) => {
+            // const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+        });
+    return adminIsSignedIn;
 }
