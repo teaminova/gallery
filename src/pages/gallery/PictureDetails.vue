@@ -49,10 +49,12 @@
       </header>
     </base-card>
   </section>
-  <section v-if="isLoggedIn">
+  <section v-if="isLoggedIn" ref="EditSection">
     <base-card>
       <div class="controls">
-        <base-button link :to="editLink">Edit</base-button>
+        <div @click="goto('EditSection')">
+          <base-button link :to="editLink" >Edit</base-button>
+        </div>
         <base-button mode="outline" @click="showDeleteDialog">Delete</base-button>
       </div>
     </base-card>
@@ -136,6 +138,11 @@ export default {
       this.$store.dispatch('gallery/deletePicture', this.id);
       this.$router.replace('/gallery');
       window.scrollTo(0,0);
+    },
+    goto(refName) {
+      let element = this.$refs[refName];
+      let top = element.offsetTop;
+      window.scrollTo(0, top);
     }
   },
   created() {

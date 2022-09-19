@@ -12,14 +12,16 @@
         <base-button @click="showMenu" v-show="!menuIsVisible">&#9776;</base-button>
         <base-button @click="showMenu" v-show="menuIsVisible">✕</base-button>
       </div>
-      <div id="hamb-menu" v-show="menuIsVisible" @click="showMenu">
-        <ul>
-          <li><router-link to="/home" @click='toTopOfPage'>HOME</router-link></li>
-          <li><router-link to="/gallery" @click='toTopOfPage'>GALLERY</router-link></li>
-          <li><router-link to="/bio" @click='toTopOfPage'>MARIJA'S BIO</router-link></li>
-          <li><router-link to="/contactInfo" @click='toTopOfPage'>CONTACT INFO</router-link></li>
-        </ul>
-      </div>
+      <transition name="menu-dropdown-list">
+        <div id="hamb-menu" v-if="menuIsVisible" @click="showMenu">
+          <ul>
+            <li><router-link to="/home" @click='toTopOfPage'>HOME</router-link></li>
+            <li><router-link to="/gallery" @click='toTopOfPage'>GALLERY</router-link></li>
+            <li><router-link to="/bio" @click='toTopOfPage'>MARIJA'S BIO</router-link></li>
+            <li><router-link to="/contactInfo" @click='toTopOfPage'>CONTACT INFO</router-link></li>
+          </ul>
+        </div>
+      </transition>
     </nav>
   </header>
 </template>
@@ -164,6 +166,24 @@ base-button {
 #hamb-menu a.router-link-active {
   border: none;
   background-color: #a8a8ca;
+}
+
+.menu-dropdown-list-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.menu-dropdown-list-leave-active {
+  transition: all 0.2s ease-in;
+}
+
+.menu-dropdown-list-enter-from,
+.menu-dropdown-list-leave-to {
+  opacity: 0;
+}
+
+.menu-dropdown-list-enter-to,
+.menu-dropdown-list-leave-from {
+  opacity: 1;
 }
 
 </style>
