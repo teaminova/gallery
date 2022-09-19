@@ -14,6 +14,8 @@ import ContactPage from '@/pages/contact/ContactPage';
 import NotFound from '@/pages/NotFound';
 import AdminAuth from "@/pages/auth/AdminAuth";
 
+import store from './store/index.js';
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -25,15 +27,27 @@ const router = createRouter({
       component: PictureDetails,
       props: true,
       children: [
-        { path: 'editPic', component: EditPicture },
+        { path: 'editPic', component: EditPicture, meta: { requiresAuth: true } },
       ]
     },
-    { path: '/addPic', component: AddPicture },
-    { path: '/auth', component: AdminAuth },
+    { path: '/addPic', component: AddPicture, meta: { requiresAuth: true } },
+    { path: '/auth', component: AdminAuth, meta: { requiresUnauth: true } },
     { path: '/bio', component: BioPage },
     { path: '/contactInfo', component: ContactPage },
     { path: '/:notFound(.*)', component: NotFound }
   ],
+});
+
+router.beforeEach(function(to, _, next) {
+  if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
+    next('/auth');
+  }
+  else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
+    next('/gallery');
+  }
+  else {
+    next();
+  }
 });
 
 export default router;

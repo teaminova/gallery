@@ -68,6 +68,7 @@ export default {
 
       try {
         await this.$store.dispatch('login', actionPayload);
+        this.$router.replace('/gallery');
       } catch (err) {
         this.error = err.message || 'Failed to authenticate, try again later.';
       }

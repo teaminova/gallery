@@ -17,8 +17,23 @@ import TheHeader from '@/components/layout/TheHeader';
 import TheFooter from "@/components/layout/TheFooter";
 
 export default {
-    name: 'App',
-    components: {TheFooter, TheHeader }
+  name: 'App',
+  components: { TheFooter, TheHeader },
+  computed: {
+    didAutoLogout() {
+      return this.$store.getters.didAutoLogout;
+    }
+  },
+  created() {
+    this.$store.dispatch('tryLogin');
+  },
+  watch: {
+    didAutoLogout(curValue, oldValue) {
+      if (curValue && curValue !== oldValue) {
+        this.$router.replace('/gallery');
+      }
+    }
+  }
 };
 </script>
 
