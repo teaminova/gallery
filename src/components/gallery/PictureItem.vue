@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li @click="goToDetails">
     <div class="img-div">
       <img alt="picture image" :src="imageUrl">
     </div>
@@ -29,6 +29,10 @@ export default {
   methods: {
     toTopOfPage() {
       window.scrollTo(0,0);
+    },
+    goToDetails() {
+      this.$router.push('/gallery/' + this.id);
+      this.toTopOfPage();
     }
   }
 };

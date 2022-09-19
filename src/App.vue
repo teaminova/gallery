@@ -78,10 +78,10 @@ the-header, #header {
 
 
 #footer {
-    position: absolute;
+  position: absolute;
   bottom: 0;
   width: 100%;
-  height: 5rem;
+  height: 4rem;
 }
 
 </style>

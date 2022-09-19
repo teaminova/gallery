@@ -32,7 +32,7 @@ export default {
 <style scoped>
 section {
   width: 100%;
-  height: 5rem;
+  height: 4rem;
   background-color: #0b032d;
   display: flex;
   justify-content: right;

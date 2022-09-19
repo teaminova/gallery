@@ -190,7 +190,8 @@ header {
 }
 
 .details{
-  max-width: 20rem;
+  max-width: 19rem;
+  min-width: 18rem;
 }
 
 .contactSec {
