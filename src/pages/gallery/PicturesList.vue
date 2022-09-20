@@ -162,7 +162,8 @@ export default {
   created() {
     this.loadGallery();
 
-    console.log(this.$route.query);
+    // console.log(this.$route.query);
+
     if (this.$route.query) {
       this.activeFilters = {
         minPrice: parseInt(this.$route.query.minPrice || this.activeFilters.minPrice, 10),

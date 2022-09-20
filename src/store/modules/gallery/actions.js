@@ -2,14 +2,14 @@ import { addImage, deleteImage } from "@/firebaseConfig";
 
 export default {
   async addPicture(context, data) {
-    if(data.ima === null) {
-      console.log('Image data is null');
-    }
+    // if(data.ima === null) {
+    //   console.log('Image data is null');
+    // }
 
     const imageRef = await addImage(data.ima);
 
     if (!imageRef.ok) {
-      // error...
+      console.error('Image file could not be uploaded');
     }
 
     const pictureId = data.tit.split(" ").join("").replace(/[^a-zA-Z0-9 ]/g);
@@ -36,16 +36,13 @@ export default {
               token,
       {
         method: 'PUT',
-        // headers: {
-        //   'Content-Type': 'application/json'
-        // },
         body: JSON.stringify(pictureData)
       });
 
-    //const responseData = await response.json();
+    // const responseData = await response.json();
 
     if (!response.ok) {
-      // error...
+      console.error('Picture could not be uploaded');
     }
 
     context.commit('addPicture', {
@@ -130,16 +127,13 @@ export default {
               token,
       {
         method: 'PUT',
-        // headers: {
-        //   'Content-Type': 'application/json'
-        // },
         body: JSON.stringify(pictureData)
       });
 
     //const responseData = await response.json();
 
     if (!response.ok) {
-      // error...
+      console.error('Picture could not be updated');
     }
 
     context.commit('editPicture', {
@@ -170,7 +164,7 @@ export default {
     //const responseData = await response.json();
 
     if (!response.ok) {
-      // error...
+      console.error('Picture could not be deleted');
     }
 
     await deleteImage(fileName);

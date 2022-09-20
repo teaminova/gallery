@@ -46,6 +46,12 @@ li {
   padding: 1rem;
   width: 20rem;
   background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+li:hover {
+  background-color: #f0f0f8;
+  box-shadow: none;
 }
 
 .img-div {
@@ -53,6 +59,7 @@ li {
   height: 18rem;
   border: 1px solid grey;
   position: relative;
+  background-color: white;
 }
 
 img {

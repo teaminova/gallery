@@ -325,6 +325,7 @@ h2 {
 
 .filter-option label {
   margin-left: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .filter-option.active label {

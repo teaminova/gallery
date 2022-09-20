@@ -14,7 +14,8 @@
         </div>
         <div class="paragraphDiv">
           <h3>
-            Marija Kjurchieva began painting in Macedonia in 2005.<br>
+            Marija Kjurchieva began painting in Macedonia in 2005.
+            <br>
             Her original paintings take inspiration from her everyday life.
           </h3>
         </div>
@@ -25,7 +26,9 @@
         </div>
         <div class="paragraphDiv">
           <h3>
-            In these pages she offers her original acrylic, watercolor, charcoal,<br>pencil, pastel and mixed media painting.
+            In these pages she offers her original acrylic, watercolor, charcoal,
+            <br>
+            pencil, pastel and mixed media paintings.
           </h3>
         </div>
       </div>
@@ -35,9 +38,11 @@
         </div>
         <div class="paragraphDiv">
           <h3>
-            Prices are based on size and subject, as well as cost of materials.<br>For more information please
-            <router-link to="/contactInfo">contact Marija</router-link>.
+            Prices are based on size and subject, as well as cost of materials.
+            <br>
+            For more information please contact Marija.
           </h3>
+          <base-button link :to="contactInfoLink">CONTACT INFO</base-button>
         </div>
       </div>
     </base-card>
@@ -53,6 +58,9 @@ export default {
   computed: {
     viewArtworkLink() {
       return '/gallery';
+    },
+    contactInfoLink() {
+      return '/contactInfo';
     }
   }
 };
@@ -119,6 +127,7 @@ h1 {
 .imageDiv img{
   width: 100%;
   margin: auto;
+  border-radius: 0.5rem;
 }
 
 a {

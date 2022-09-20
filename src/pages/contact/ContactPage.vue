@@ -10,14 +10,18 @@
     <base-card>
       <h2>Contact Marija!</h2>
       <div class="contacts">
-        <h3>E-Mail: <a href="mailto:maridzasart@gmail.com?subject=Mail from Website">maridzasart@gmail.com</a></h3>
-        <h3>Phone number: 000 000 000</h3>
-        <h3>Facebook: <a href="https://www.facebook.com/marija.kjurchieva.1" target="_blank">Мариџа Ќурчиева</a></h3>
-        <h3>Instagram: Marija Kjurchieva</h3>
-        <h3>Twitter: Marija Kjurchieva</h3>
-        <h3>Skype: Marija Kjurchieva</h3>
-        <br>
-        <p>ovie na kraj kako icons samo bi bile</p>
+        <div>
+          <img src="../../components/assets/email_icon.jpg" alt="E-Mail">
+          <h3><a href="mailto:maridzasart@gmail.com?subject=Mail from Website">maridzasart@gmail.com</a></h3>
+        </div>
+        <div>
+          <img src="../../components/assets/phone_icon.jpg" alt="Phone Number">
+          <h3><a href="">000 000 000</a></h3>
+        </div>
+        <div>
+          <img src="../../components/assets/instagram_icon.jpg" alt="Instagram">
+          <h3><a href="https://instagram.com/prosecen.umetnik" target="_blank">prosecen.umetnik</a></h3>
+        </div>
       </div>
     </base-card>
   </section>
@@ -65,11 +69,41 @@ section {
 }
 
 h2 {
-  margin: 1rem;
+  margin: 2rem;
 }
 
-div {
-  margin: 3rem;
+.contacts {
+  margin: auto;
+  max-width: 25rem;
+}
+
+.contacts div {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  max-width: 30rem;
+}
+
+img {
+  max-width: 3rem;
+  margin-top: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: #420020;
+  padding: 0.5rem;
+}
+
+a:hover,
+a:active {
+  color: #420020;
+  border-radius: 0.5rem;
+  border: 1px solid #8888aa;
+}
+
+h3 {
+  margin: 0.75rem;
 }
 
 </style>

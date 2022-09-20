@@ -7,7 +7,7 @@
     </base-card>
   </section>
   <div class="img-div">
-    <img src="../../components/assets/artistPic.png" alt="photo of Marija">
+    <img src="../../components/assets/artistPhoto.jpg" alt="photo of Marija">
   </div>
   <section class="biography">
     <base-card>
@@ -62,6 +62,7 @@ export default {
 .StartHeaderBgColor {
   background-color: #8888aa;
   margin-top: 0;
+  margin-bottom: 0;
   padding: 0.5rem;
 }
 
@@ -74,6 +75,7 @@ export default {
   max-width: 30rem;
   text-align: center;
   padding: 2rem;
+  padding-bottom: 0;
   margin: auto;
 }
 
@@ -90,7 +92,9 @@ export default {
 
 .biography p {
   margin: auto;
+  padding: 1rem;
   max-width: 40rem;
   text-align: center;
+  font-size: large;
 }
 </style>
