@@ -1,67 +1,70 @@
 <template>
-  <base-dialog v-if="deleteDialogIsVisible" title="Remove Picture">
-    <template #default>
-      <p>Are you sure you want to remove this picture from the gallery?</p>
-    </template>
-    <template #actions>
-      <base-button @click="deletePicture">Yes</base-button>
-      <base-button mode="outline" @click="showDeleteDialog">No</base-button>
-    </template>
-  </base-dialog>
+  <main v-if="selectedPicture">
+    <base-dialog v-if="deleteDialogIsVisible" title="Remove Picture">
+      <template #default>
+        <p>Are you sure you want to remove this picture from the gallery?</p>
+      </template>
+      <template #actions>
+        <base-button @click="deletePicture">Yes</base-button>
+        <base-button mode="outline" @click="showDeleteDialog">No</base-button>
+      </template>
+    </base-dialog>
 
-  <section>
-    <base-card class="StartHeaderBgColor">
-      <div class="start_header">
-        <go-back></go-back>
-        <h2>Picture Details</h2>
-      </div>
-    </base-card>
-    <base-card class="details_container">
-      <div class="img-div">
-        <img alt="picture image" :src="imageUrl">
-      </div>
-      <div class="details">
-        <h2>{{ title }}</h2>
-        <h3>{{ price }} MKD</h3>
-        <h3>{{ dimensions }}</h3>
-        <h3>{{ year }}</h3>
-        <base-badge type="theme" :title="theme"></base-badge>
-        <base-badge
-          v-for="technique in techniques"
-          :key="technique"
-          :type="technique"
-          :title="technique"
-        ></base-badge>
-        <p>{{ description }}</p>
-      </div>
-    </base-card>
-  </section>
-  <section class="contactSec" v-if="!isLoggedIn">
-    <base-card>
-      <header>
-        <h2>Interested? Contact Marija!</h2>
-        <div class="sendMailDiv">
-          <a :href="sendMail">Send E-Mail for Selected Picture</a>
+    <section>
+      <base-card class="StartHeaderBgColor">
+        <div class="start_header">
+          <go-back></go-back>
+          <h2>Picture Details</h2>
         </div>
-        <div>
-          <base-button link :to="contactInfoLink" mode="outline">See All Contact Info</base-button>
+      </base-card>
+      <base-card class="details_container">
+        <div class="img-div">
+          <img alt="picture image" :src="imageUrl">
         </div>
-      </header>
-    </base-card>
-  </section>
-  <section v-if="isLoggedIn" ref="EditSection">
-    <base-card>
-      <div class="controls">
-        <div @click="goto('EditSection')">
-          <base-button link :to="editLink" >Edit</base-button>
+        <div class="details">
+          <h2>{{ title }}</h2>
+          <h3>{{ price }} MKD</h3>
+          <h3>{{ dimensions }}</h3>
+          <h3>{{ year }}</h3>
+          <base-badge type="theme" :title="theme"></base-badge>
+          <base-badge
+              v-for="technique in techniques"
+              :key="technique"
+              :type="technique"
+              :title="technique"
+          ></base-badge>
+          <p>{{ description }}</p>
         </div>
-        <base-button mode="outline" @click="showDeleteDialog">Delete</base-button>
-      </div>
-    </base-card>
-  </section>
-  <section>
-    <router-view></router-view>
-  </section>
+      </base-card>
+    </section>
+    <section class="contactSec" v-if="!isLoggedIn">
+      <base-card>
+        <header>
+          <h2>Interested? Contact Marija!</h2>
+          <div class="sendMailDiv">
+            <a :href="sendMail">Send E-Mail for Selected Picture</a>
+          </div>
+          <div>
+            <base-button link :to="contactInfoLink" mode="outline">See All Contact Info</base-button>
+          </div>
+        </header>
+      </base-card>
+    </section>
+    <section v-if="isLoggedIn" ref="EditSection">
+      <base-card>
+        <div class="controls">
+          <div @click="goto('EditSection')">
+            <base-button link :to="editLink" >Edit</base-button>
+          </div>
+          <base-button mode="outline" @click="showDeleteDialog">Delete</base-button>
+        </div>
+      </base-card>
+    </section>
+    <section>
+      <router-view></router-view>
+    </section>
+  </main>
+  <base-spinner v-else></base-spinner>
 </template>
 
 <script>
@@ -70,20 +73,22 @@ import BaseButton from '@/components/ui/BaseButton';
 import BaseBadge from '@/components/ui/BaseBadge';
 import BaseDialog from '@/components/ui/BaseDialog';
 import GoBack from '@/components/ui/GoBack';
+import BaseSpinner from "@/components/ui/BaseSpinner";
 export default {
   name: 'PictureDetails',
-  components: { GoBack, BaseDialog, BaseBadge, BaseButton, BaseCard },
+  components: { BaseSpinner, GoBack, BaseDialog, BaseBadge, BaseButton, BaseCard },
   props: ['id'],
   data() {
     return {
-      selectedPicture: null,
-      selectedPicture1: this.$store.getters['gallery/gallery'].find(
-        (picture) => picture.id === this.id
-      ),
       deleteDialogIsVisible: false
     };
   },
   computed: {
+    selectedPicture() {
+      return this.$store.getters['gallery/gallery'].find(
+          (picture) => picture.id === this.id
+      );
+    },
     isLoggedIn() {
       return this.$store.getters.isAuthenticated;
     },
@@ -131,6 +136,15 @@ export default {
     }
   },
   methods: {
+    async loadGallery(refresh = false) {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch('gallery/loadGallery', {forceRefresh: refresh});
+      } catch (error) {
+        this.error = error.message || 'Something went wrong!';
+      }
+      this.isLoading = false;
+    },
     showDeleteDialog() {
       this.deleteDialogIsVisible = !this.deleteDialogIsVisible;
     },
@@ -145,15 +159,8 @@ export default {
       window.scrollTo(0, top);
     }
   },
-  created() {
-    this.selectedPicture = this.$store.getters['gallery/gallery'].find(
-      (picture) => picture.id === this.id
-    );
-  },
-  provide() {
-    return {
-      selectedPicture: this.selectedPicture1
-    }
+  mounted() {
+    this.loadGallery();
   }
 };
 </script>
