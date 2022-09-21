@@ -292,47 +292,68 @@ import BaseButton from '@/components/ui/BaseButton';
 export default {
   name: 'EditForm',
   components: { BaseButton },
-  inject: ['selectedPicture'],
   emits: ['save-data', 'cancel-edit'],
   data() {
     return {
       //initialUrl: this.selectedPicture.imageUrl,
       imageUrl: {
-        val: this.selectedPicture.imageUrl,
+        val: this.$store.getters['gallery/gallery'].find(
+            (picture) => picture.id === localStorage.getItem('pictureId')
+        ).imageUrl,
         isValid: true
       },
-      fileName: this.selectedPicture.fileName,
+      fileName: this.$store.getters['gallery/gallery'].find(
+          (picture) => picture.id === localStorage.getItem('pictureId')
+      ).fileName,
       title: {
-        val: this.selectedPicture.title,
+        val: this.$store.getters['gallery/gallery'].find(
+            (picture) => picture.id === localStorage.getItem('pictureId')
+        ).title,
         isValid: true
       },
       price: {
-        val: this.selectedPicture.price,
+        val: this.$store.getters['gallery/gallery'].find(
+            (picture) => picture.id === localStorage.getItem('pictureId')
+        ).price,
         isValid: true
       },
       width: {
-        val: this.selectedPicture.width,
+        val: this.$store.getters['gallery/gallery'].find(
+            (picture) => picture.id === localStorage.getItem('pictureId')
+        ).width,
         isValid: true
       },
       height: {
-        val: this.selectedPicture.height,
+        val: this.$store.getters['gallery/gallery'].find(
+            (picture) => picture.id === localStorage.getItem('pictureId')
+        ).height,
         isValid: true
       },
       theme: {
-        val: this.selectedPicture.theme,
+        val: this.$store.getters['gallery/gallery'].find(
+            (picture) => picture.id === localStorage.getItem('pictureId')
+        ).theme,
         isValid: true
       },
       techniques: {
-        val: this.selectedPicture.techniques,
+        val: this.$store.getters['gallery/gallery'].find(
+            (picture) => picture.id === localStorage.getItem('pictureId')
+        ).techniques,
         isValid: true
       },
       year: {
-        val: this.selectedPicture.year,
+        val: this.$store.getters['gallery/gallery'].find(
+            (picture) => picture.id === localStorage.getItem('pictureId')
+        ).year,
         isValid: true
       },
-      uploadDate: this.selectedPicture.uploadDate,
+      uploadDate: this.$store.getters['gallery/gallery'].find(
+          (picture) => picture.id === localStorage.getItem('pictureId')
+      ).uploadDate,
       description: {
-        val: this.selectedPicture.description,
+        val: this.$store.getters['gallery/gallery'].find(
+            (picture) => picture.id === localStorage.getItem('pictureId')
+        ).description,
         isValid: true
       },
       image: null,
@@ -340,6 +361,16 @@ export default {
     };
   },
   methods: {
+    async loadGallery(refresh = false) {
+      console.log("this is this.selectedPicture: "+this.selectedPicture);
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch('gallery/loadGallery', {forceRefresh: refresh});
+      } catch (error) {
+        this.error = error.message || 'Something went wrong!';
+      }
+      this.isLoading = false;
+    },
     onPickFile() {
       this.$refs.fileInput.click();
     },
@@ -427,6 +458,9 @@ export default {
     cancelEdit() {
       this.$emit('cancel-edit');
     }
+  },
+  mounted() {
+    this.loadGallery();
   }
 };
 </script>

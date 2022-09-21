@@ -161,6 +161,7 @@ export default {
   },
   mounted() {
     this.loadGallery();
+    localStorage.setItem('pictureId', this.id);
   }
 };
 </script>
