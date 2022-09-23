@@ -1,16 +1,17 @@
 <template>
     <section class="homeBg">
       <div class="mainHomeDiv">
-        <h1>MARIJA KJURCHIEVA</h1>
+        <div class="logo">
+          <img src="../../components/assets/home/MarijaKjurchieva.png" alt="Marija Kjurchieva">
+        </div>
         <base-button link :to="viewArtworkLink">VIEW ARTWORK</base-button>
-<!--        <h3><router-link to="/gallery"></router-link></h3>-->
       </div>
     </section>
   <section class="homeDetails">
     <base-card>
       <div class="container">
         <div class="imageDiv">
-          <img src="../../components/assets/homePic_1.png" alt="painting">
+          <img src="../../components/assets/home/homePic_1.png" alt="painting">
         </div>
         <div class="paragraphDiv">
           <h3>
@@ -22,7 +23,7 @@
       </div>
       <div class="container">
         <div class="imageDiv">
-          <img src="../../components/assets/homePic_2.png" alt="painting">
+          <img src="../../components/assets/home/homePic_2.png" alt="painting">
         </div>
         <div class="paragraphDiv">
           <h3>
@@ -34,7 +35,7 @@
       </div>
       <div class="container">
         <div class="imageDiv">
-          <img src="../../components/assets/homePic_3.png" alt="painting">
+          <img src="../../components/assets/home/homePic_3.png" alt="painting">
         </div>
         <div class="paragraphDiv">
           <h3>
@@ -68,16 +69,7 @@ export default {
 
 <style scoped>
 .homeBg {
-  /*
-  background-image: url("../../components/assets/homeBg.png");
-   */
-  /*
-  border-bottom: 0.5rem solid #fff;
-   */
   height: 30rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   max-width: 60rem;
   margin: auto;
   border-radius: 1rem;
@@ -91,7 +83,17 @@ export default {
   max-height: 100%;
   max-width: 100%;
   text-align: center;
-  padding-top: 8rem;
+  padding-top: 6rem;
+}
+
+.logo {
+  max-width: 35rem;
+  margin: auto;
+  padding: 2rem;
+}
+
+.logo img {
+  max-width: 100%;
 }
 
 h1 {
@@ -103,14 +105,6 @@ h1 {
   position: relative;
   max-width: 60rem;
   margin: auto;
-}
-
-.container {
-  /*
-  display: flex;
-   */
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .paragraphDiv{

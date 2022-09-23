@@ -80,6 +80,7 @@ h3 {
 h3,
 h4 {
   margin: 0.5rem 0;
+  padding-left: 0.5rem;
 }
 
 div {

@@ -1,7 +1,6 @@
 <template>
   <form @submit.prevent="submitForm">
     <div class="form-control" :class="{invalid: !imageUrl.isValid}">
-      <!-- <label for="file">Attach file here: </label> -->
       <base-button
         type="button"
         mode="outline"

@@ -162,8 +162,6 @@ export default {
   created() {
     this.loadGallery();
 
-    // console.log(this.$route.query);
-
     if (this.$route.query) {
       this.activeFilters = {
         minPrice: parseInt(this.$route.query.minPrice || this.activeFilters.minPrice, 10),
@@ -297,7 +295,6 @@ export default {
     },
     sortGallery(gallery) {
       if (this.sorter === 'newest'){
-        //return [...this.$store.getters['gallery/gallery']].reverse();
         return gallery.sort((a,b) => (a.uploadDate < b.uploadDate) ? 1 : -1);
       }
       else if (this.sorter === 'a_z') {

@@ -237,9 +237,6 @@ header {
 
 .img-div {
   float: left;
-  /*
-  margin-right: 1rem;
-   */
   margin: 1rem;
   width: 18rem;
   height: 18rem;

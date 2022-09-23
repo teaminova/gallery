@@ -1,7 +1,6 @@
 <template>
   <form @submit.prevent="submitForm">
     <div class="form-control" :class="{invalid: !imageUrl.isValid}">
-      <!-- <label for="file">Attach file here: </label> -->
       <base-button
         type="button"
         mode="outline"
@@ -295,7 +294,6 @@ export default {
   emits: ['save-data', 'cancel-edit'],
   data() {
     return {
-      //initialUrl: this.selectedPicture.imageUrl,
       imageUrl: {
         val: this.$store.getters['gallery/gallery'].find(
             (picture) => picture.id === localStorage.getItem('pictureId')

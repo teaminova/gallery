@@ -7,7 +7,7 @@
     </base-card>
   </section>
   <div class="img-div">
-    <img src="../../components/assets/artistPhoto.jpg" alt="photo of Marija">
+    <img src="../../components/assets/bio/artistPhoto.jpg" alt="photo of Marija">
   </div>
   <section class="biography">
     <base-card>
@@ -24,7 +24,7 @@
         and from 2018 as an assistant educator for preschool children.
       </p>
       <p>
-        During her painting carrer, she participated in the project "Creative minds of the world"
+        During her painting carrier, she participated in the project "Creative minds of the world"
         (international project) where in a competition with about 2000 artists from around the world
         she was selected in the top 200, which will later enter the catalog of the project.
       </p>
@@ -86,5 +86,6 @@ export default {
   max-width: 40rem;
   text-align: center;
   font-size: large;
+  font-weight: bold;
 }
 </style>

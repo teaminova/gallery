@@ -25,7 +25,7 @@ export default {
       window.scrollTo(0,0);
     },
     cancelEdit() {
-      this.$router.replace('/gallery/' + this.id);
+      this.$router.go(-1);
       window.scrollTo(0,0);
     }
   }

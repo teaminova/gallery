@@ -11,15 +11,15 @@
       <h2>Contact Marija!</h2>
       <div class="contacts">
         <div>
-          <img src="../../components/assets/email_icon.jpg" alt="E-Mail">
+          <img src="../../components/assets/contact/email_icon.jpg" alt="E-Mail">
           <h3><a href="mailto:maridzasart@gmail.com?subject=Mail from Website">maridzasart@gmail.com</a></h3>
         </div>
         <div>
-          <img src="../../components/assets/phone_icon.jpg" alt="Phone Number">
+          <img src="../../components/assets/contact/phone_icon.jpg" alt="Phone Number">
           <h3><a href="">000 000 000</a></h3>
         </div>
         <div>
-          <img src="../../components/assets/instagram_icon.jpg" alt="Instagram">
+          <img src="../../components/assets/contact/instagram_icon.jpg" alt="Instagram">
           <h3><a href="https://instagram.com/prosecen.umetnik" target="_blank">prosecen.umetnik</a></h3>
         </div>
       </div>

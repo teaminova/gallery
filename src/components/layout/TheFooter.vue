@@ -17,13 +17,13 @@ export default {
       return this.$store.getters.isAuthenticated;
     },
     authRoute() {
-      return this.$route.path == '/auth';
+      return this.$route.path === '/auth';
     }
   },
   methods: {
     logout() {
       this.$store.dispatch('logout');
-      this.$router.replace('/gallery');
+      // this.$router.replace('/gallery');
     }
   }
 }
@@ -42,7 +42,6 @@ section {
 .admin-button button,
 .admin-button a {
   text-decoration: none;
-  /* color: #f391e3; */
   color: #f67e7d;
   background-color: transparent;
   display: inline-block;
@@ -50,6 +49,7 @@ section {
   border: 1px solid transparent;
   border-radius: 0.5rem;
   margin: 0.5rem;
+  font-size: medium;
 }
 
 .admin-button button:hover,
