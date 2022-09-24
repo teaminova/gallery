@@ -360,7 +360,6 @@ export default {
   },
   methods: {
     async loadGallery(refresh = false) {
-      console.log("this is this.selectedPicture: "+this.selectedPicture);
       this.isLoading = true;
       try {
         await this.$store.dispatch('gallery/loadGallery', {forceRefresh: refresh});
@@ -436,7 +435,7 @@ export default {
       }
 
       const formData = {
-        id: this.selectedPicture.id,
+        id: localStorage.getItem('pictureId'),
         ima: this.image,
         iURL: this.imageUrl.val,
         fil: this.fileName,

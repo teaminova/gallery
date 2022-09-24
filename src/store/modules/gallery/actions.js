@@ -9,7 +9,7 @@ export default {
     const imageRef = await addImage(data.ima);
 
     if (!imageRef.ok) {
-      console.error('Image file could not be uploaded');
+      // console.error('Image file could not be uploaded');
     }
 
     const pictureId = data.tit.split(" ").join("").replace(/[^a-zA-Z0-9 ]/g);
