@@ -15,7 +15,7 @@
         </div>
         <div class="paragraphDiv">
           <h3>
-            Marija Kjurchieva began painting in Macedonia in 2012.
+            Marija Qurchieva began painting in Macedonia in 2012.
             <br>
             Her original paintings take inspiration from her everyday life.
           </h3>

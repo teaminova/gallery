@@ -12,7 +12,7 @@
   <section class="biography">
     <base-card>
       <p>
-        Marija Kjurchieva (born 2002) is a young artist
+        Marija Qurchieva (born 2002) is a young artist
         who has been studying painting since she was 10 years old.
         She participated in an art colony within her primary education.
         She continued her education at the High School of Art "Lazar Lichenoski",

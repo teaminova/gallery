@@ -60,6 +60,7 @@ body {
     margin: 0;
     min-height: 100%;
   position: relative;
+  overflow-y:scroll;
 }
 
 #container {

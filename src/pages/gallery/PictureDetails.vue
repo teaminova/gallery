@@ -45,7 +45,7 @@
             <a :href="sendMail">Send E-Mail for Selected Picture</a>
           </div>
           <div>
-            <base-button link :to="contactInfoLink" mode="outline">See All Contact Info</base-button>
+            <base-button link :to="contactInfoLink" mode="outline" @click="scrollToTop">See All Contact Info</base-button>
           </div>
         </header>
       </base-card>
@@ -157,6 +157,9 @@ export default {
       let element = this.$refs[refName];
       let top = element.offsetTop;
       window.scrollTo(0, top);
+    },
+    scrollToTop() {
+      window.scroll(0,0);
     }
   },
   mounted() {

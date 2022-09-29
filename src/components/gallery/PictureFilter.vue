@@ -316,6 +316,7 @@ h2 {
 
 .filter-option {
   width: 10rem;
+  height: 2rem;
 }
 
 .filter-option label,

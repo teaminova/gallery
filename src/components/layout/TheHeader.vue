@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav>
-      <h1><router-link to="/home" @click='toTopOfPage'>MARIJA KJURCHIEVA</router-link></h1>
+      <h1><router-link to="/home" @click='toTopOfPage'>MARIJA QURCHIEVA</router-link></h1>
       <ul id="menu-bar">
         <li><router-link to="/home" @click='toTopOfPage'>HOME</router-link></li>
         <li><router-link to="/gallery" @click='toTopOfPage'>GALLERY</router-link></li>
