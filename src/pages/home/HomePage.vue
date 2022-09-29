@@ -2,7 +2,7 @@
     <section class="homeBg">
       <div class="mainHomeDiv">
         <div class="logo">
-          <img src="../../components/assets/home/MarijaKjurchieva.png" alt="Marija Kjurchieva">
+          <img src="../../components/assets/home/artistSignature.png" alt="Marija Kjurchieva">
         </div>
         <base-button link :to="viewArtworkLink">VIEW ARTWORK</base-button>
       </div>
@@ -15,7 +15,7 @@
         </div>
         <div class="paragraphDiv">
           <h3>
-            Marija Kjurchieva began painting in Macedonia in 2005.
+            Marija Kjurchieva began painting in Macedonia in 2012.
             <br>
             Her original paintings take inspiration from her everyday life.
           </h3>
@@ -43,7 +43,7 @@
             <br>
             For more information please contact Marija.
           </h3>
-          <base-button link :to="contactInfoLink">CONTACT INFO</base-button>
+          <base-button link :to="contactInfoLink" @click="scrollToTop">CONTACT INFO</base-button>
         </div>
       </div>
     </base-card>
@@ -62,6 +62,11 @@ export default {
     },
     contactInfoLink() {
       return '/contactInfo';
+    }
+  },
+  methods: {
+    scrollToTop() {
+      window.scroll(0,0);
     }
   }
 };
@@ -87,7 +92,7 @@ export default {
 }
 
 .logo {
-  max-width: 35rem;
+  max-width: 40rem;
   margin: auto;
   padding: 2rem;
 }

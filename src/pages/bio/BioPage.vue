@@ -26,17 +26,39 @@
       <p>
         During her painting carrier, she participated in the project "Creative minds of the world"
         (international project) where in a competition with about 2000 artists from around the world
-        she was selected in the top 200, which will later enter the catalog of the project.
+        she was selected in the top 200, which later entered the catalog of the project.
       </p>
+      <p>
+        Now, Marija is studying painting at the Faculty of Visual Arts in Skopje.
+        She also has her own art studio where she gives classes to aspiring young artists.
+      </p>
+      <br>
+      <p>
+        For more information please contact Marija.
+      </p>
+      <div class="contactButton">
+        <base-button link :to="contactInfoLink" @click="scrollToTop">CONTACT INFO</base-button>
+      </div>
     </base-card>
   </section>
 </template>
 
 <script>
 import BaseCard from '@/components/ui/BaseCard';
+import BaseButton from "@/components/ui/BaseButton";
 export default {
   name: 'BioPage',
-  components: { BaseCard }
+  components: { BaseCard, BaseButton },
+  computed: {
+    contactInfoLink() {
+      return '/contactInfo';
+    }
+  },
+  methods: {
+    scrollToTop() {
+      window.scroll(0,0);
+    }
+  }
 };
 </script>
 
@@ -87,5 +109,14 @@ export default {
   text-align: center;
   font-size: large;
   font-weight: bold;
+}
+
+p:first-of-type {
+  margin-top: 0.5rem;
+}
+
+.contactButton {
+  margin-bottom: 1rem;
+  text-align: center;
 }
 </style>
