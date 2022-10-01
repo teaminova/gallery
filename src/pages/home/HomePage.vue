@@ -2,7 +2,7 @@
     <section class="homeBg">
       <div class="mainHomeDiv">
         <div class="logo">
-          <img src="../../components/assets/home/artistSignature.png" alt="Marija Kjurchieva">
+          <img src="../../components/assets/home/artistSignature.png" alt="Marija Qurchieva">
         </div>
         <base-button link :to="viewArtworkLink">VIEW ARTWORK</base-button>
       </div>

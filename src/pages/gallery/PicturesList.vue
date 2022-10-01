@@ -143,11 +143,11 @@ export default {
       showSortOptions: false,
       activeFilters: {
         minPrice: 0,
-        maxPrice: 1000000000,
+        maxPrice: 1000000,
         minWidth: 0,
-        maxWidth: 1000000000,
+        maxWidth: 1000000,
         minHeight: 0,
-        maxHeight: 1000000000,
+        maxHeight: 1000000,
         acrylic: true,
         charcoal: true,
         watercolor: true,
@@ -390,7 +390,7 @@ export default {
 }
 
 #dropdownThemes select:focus {
-  background-color: #ffe2e2;
+  background-color: #fff2f2;
 }
 
 #dropdownThemes option {

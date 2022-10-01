@@ -8,7 +8,7 @@
           type="number"
           id="minPrice"
           min="0"
-          max="1000000000"
+          max="1000000"
           placeholder="min"
           size="10"
           v-model='filters.minPrice'
@@ -22,7 +22,7 @@
           type="number"
           id="maxPrice"
           min="0"
-          max="1000000000"
+          max="1000000"
           placeholder="max"
           size="10"
           v-model='filters.maxPrice'
@@ -40,7 +40,7 @@
           type="number"
           id="minWidth"
           min="0"
-          max="1000000000"
+          max="1000000"
           placeholder="min"
           size="10"
           v-model='filters.minWidth'
@@ -54,7 +54,7 @@
           type="number"
           id="maxWidth"
           min="0"
-          max="1000000000"
+          max="1000000"
           placeholder="max"
           size="10"
           v-model='filters.maxWidth'
@@ -72,7 +72,7 @@
           type="number"
           id="minHeight"
           min="0"
-          max="1000000000"
+          max="1000000"
           placeholder="min"
           size="10"
           v-model='filters.minHeight'
@@ -86,7 +86,7 @@
           type="number"
           id="maxHeight"
           min="0"
-          max="1000000000"
+          max="1000000"
           placeholder="max"
           size="10"
           v-model='filters.maxHeight'
@@ -191,11 +191,11 @@ export default {
     return {
       filters: {
         minPrice: 0,
-        maxPrice:1000000000,
+        maxPrice:1000000,
         minWidth: 0,
-        maxWidth: 1000000000,
+        maxWidth: 1000000,
         minHeight: 0,
-        maxHeight: 1000000000,
+        maxHeight: 1000000,
         acrylic: true,
         charcoal: true,
         watercolor: true,
