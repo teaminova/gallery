@@ -3,18 +3,23 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/pages/home/HomePage';
 
 import PicturesList  from '@/pages/gallery/PicturesList';
-import PictureDetails from '@/pages/gallery/PictureDetails';
-import AddPicture from '@/pages/gallery/AddPicture';
-import EditPicture from '@/pages/gallery/EditPicture';
+// import PictureDetails from '@/pages/gallery/PictureDetails';
+// import AddPicture from '@/pages/gallery/AddPicture';
+// import EditPicture from '@/pages/gallery/EditPicture';
 
 import BioPage from '@/pages/bio/BioPage';
 
 import ContactPage from '@/pages/contact/ContactPage';
 
 import NotFound from '@/pages/NotFound';
-import AdminAuth from "@/pages/auth/AdminAuth";
+// import AdminAuth from "@/pages/auth/AdminAuth";
 
 import store from './store/index.js';
+
+const PictureDetails = () => import('./pages/gallery/PictureDetails');
+const AddPicture = () => import('./pages/gallery/AddPicture');
+const EditPicture = () => import('./pages/gallery/EditPicture');
+const AdminAuth = () => import('./pages/auth/AdminAuth');
 
 const router = createRouter({
   history: createWebHistory(),
