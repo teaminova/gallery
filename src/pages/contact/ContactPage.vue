@@ -16,7 +16,7 @@
         </div>
         <div>
           <img src="../../components/assets/contact/phone_icon.jpg" alt="Phone Number">
-          <h3><a href="">000 000 000</a></h3>
+          <h3><a href="tel:+38978281646">+389 78 281 646</a></h3>
         </div>
         <div>
           <img src="../../components/assets/contact/instagram_icon.jpg" alt="Instagram">
